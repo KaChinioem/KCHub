@@ -227,12 +227,6 @@ coroutine.wrap(pcall)(function()
             warn("Your exploit does not support sethiddenproperty, please use a different exploit.")
         end
         if _G.SendNotifications then
-            StarterGui:SetCore("SendNotification", {
-                Title = "discord.gg/rips",
-                Text = "No Shadows Enabled",
-                Duration = 5,
-                Button1 = "Okay"
-            })
         end
         if _G.ConsoleLogs then
             warn("No Shadows Enabled")
