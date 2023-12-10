@@ -284,7 +284,24 @@ game.DescendantAdded:Connect(function(value)
     wait(_G.LoadedWait or 1)
     CheckIfBad(value)
 end)
-
+local Descendants = game:GetDescendants()
+local StartNumber = _G.WaitPerAmount or 500
+local WaitNumber = _G.WaitPerAmount or 500
+if _G.SendNotifications then
+end
+if _G.ConsoleLogs then
+    warn("Checking " .. #Descendants .. " Instances...")
+end
+for i, v in pairs(Descendants) do
+    CheckIfBad(v)
+    if i == WaitNumber then
+        task.wait()
+        if _G.ConsoleLogs then
+            print("Loaded " .. i .. "/" .. #Descendants)
+        end
+        WaitNumber = WaitNumber + StartNumber
+    end
+end
 warn("FPS Booster Loaded!")
 --game.DescendantAdded:Connect(CheckIfBad)
 --[[game.DescendantAdded:Connect(function(value)
