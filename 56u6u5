@@ -3449,7 +3449,7 @@ if not IsLobby then
 			end
 		end
 		
-		if not Available then
+		if not Available then end
 		
 		for onMap = 0,5 do
 
@@ -3465,12 +3465,11 @@ if not IsLobby then
 			if not possiblePositionResult then Available = false break end
 		end
 		
-		if not Available then continue end
+		if not Available then end
 		
 		chosenPoints += 1
 		groundPoints[tostring(chosenPoints)] = groundPoint.Position
 	end	
-end
 end
 
 local cannotBePlacedAnywhere = {}
