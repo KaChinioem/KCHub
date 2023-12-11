@@ -3430,47 +3430,48 @@ if not IsLobby then
 	
 end
 
-
 groundPoints = {}
-if not IsLobby then
-	local totalPoints = 0 for _,point in ipairs(workspace._BASES.pve.LANES['1']:GetChildren()) do if tonumber(point.Name) then totalPoints += 1 end end
-	local chosenPoints = 0
-	
-	for point = 1, totalPoints do
-		if chosenPoints >=6 then break end
-		
-		
-		local groundPoint = workspace._BASES.pve.LANES['1'][tostring(point)]
-		local Available = true
-		
-		for _, otherPoint in pairs(groundPoints) do
-			if (otherPoint - groundPoint.Position).Magnitude > 10 then 
-				Available = false break
+	if not IsLobby then
+		local totalPoints = 0
+		local chosenPoints = 0
+			for _,point in ipairs(workspace._BASES.pve.LANES['1']:GetChildren()) do 
+				if tonumber(point.Name) then 
+					totalPoints += 1 
+				end
 			end
-		end
-		
-		if not Available then end
-		
-		for onMap = 0,5 do
+			
+			for point = 1, totalPoints do
+				if chosenPoints >=6 then break end
+					local groundPoint = workspace._BASES.pve.LANES['1'][tostring(point)]
+					local Available = true
+					
+				if not Available then continue end	
+					
+				for _, otherPoint in pairs(groundPoints) do
+					if (otherPoint - groundPoint.Position).Magnitude > 10 then continue end
+					Available = false break
+				end	
+				
+			for onMap = 0,5 do
 
-			local possiblePosition = groundPoint.Position + Vector3.new( (onMap % 3 ) * 4 , 0, math.floor(onMap / 6 + 0.5) * 4 ) + Vector3.new(0,10,0)
+				local possiblePosition = groundPoint.Position + Vector3.new( (onMap % 3 ) * 4 , 0, math.floor(onMap / 6 + 0.5) * 4 ) + Vector3.new(0,10,0)
+				
+				local possiblePositionRaycast = RaycastParams.new()
+				possiblePositionRaycast.FilterDescendantsInstances = {workspace._terrain.ground}
+				possiblePositionRaycast.FilterType = Enum.RaycastFilterType.Include
+				possiblePositionRaycast.IgnoreWater = true
+				
+				local possiblePositionResult = workspace:Raycast(possiblePosition, Vector3.new(0,-15,0), possiblePositionRaycast)
+				
+				if not possiblePositionResult then Available = false break end
+			end
 			
-			local possiblePositionRaycast = RaycastParams.new()
-			possiblePositionRaycast.FilterDescendantsInstances = {workspace._terrain.ground}
-			possiblePositionRaycast.FilterType = Enum.RaycastFilterType.Include
-			possiblePositionRaycast.IgnoreWater = true
-			
-			local possiblePositionResult = workspace:Raycast(possiblePosition, Vector3.new(0,-15,0), possiblePositionRaycast)
-			
-			if not possiblePositionResult then Available = false break end
-		end
-		
-		if not Available then end
+		if not Available then continue end	
 		
 		chosenPoints += 1
-		groundPoints[tostring(chosenPoints)] = groundPoint.Position
+		groundPoints[tostring(chosenPoints)] = groundPoint.Position				
 	end	
-end
+end	
 
 local cannotBePlacedAnywhere = {}
 local farmUnits = {'speedwagon', 'bulma', 'nami_evolved'}
