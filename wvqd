@@ -3412,14 +3412,14 @@ if not IsLobby then
 					if not possiblePositionResult or possiblePositionResult.Instance.Parent.Name ~= 'hill' then hillpartCanBeUsed[tostring(yOffest)] = false break end
 					
 				end
-			end
-		 end	
+			end		 	
 			
 			
 			if newdistance < distance and (hillpartCanBeUsed['0'] or hillpartCanBeUsed['1']) then 
 				distance = newdistance chosenHill = hillPart
 				chosenPoint = 1 if hillpartCanBeUsed['0'] then chosenPoint = 0 end
 			end
+		end	
 		end
 		
 		if not chosenHill then continue end
