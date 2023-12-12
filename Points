@@ -1,0 +1,96 @@
+--- AUTOPLACE AVAILABLE HILL POINTS
+hillPoints = {}
+if not IsLobby then
+	local amountGroundPoints = 0 for _,lane in ipairs(workspace._BASES.pve.LANES['1']:GetChildren()) do if not tonumber(lane.Name) then continue end amountGroundPoints += 1 end
+	
+	for groundPoint = 1, math.clamp(amountGroundPoints, 1, 6) do
+		if groundPoint >= #workspace._terrain.hill:GetChildren() then break end
+		local groundPart = workspace._BASES.pve.LANES['1'][tostring(groundPoint)]
+		local chosenHill
+		local chosenPoint
+		local distance = 99999
+		
+		for _, hillPart in ipairs(workspace._terrain.hill:GetDescendants()) do
+			if not hillPart:IsA('Part') and not hillPart:IsA('MeshPart') and not hillPart:IsA('UnionOperation') then continue end
+			local hillused = false
+			
+			for _, hillpos in pairs(hillPoints) do if (hillpos.pos - (hillPart.Position + Vector3.new(0, hillPart.Size.Y/2 + 0.5,0) ) ).Magnitude <= 5 then hillused = true break end end
+			if hillused then continue end
+			local newdistance = (hillPart.Position - groundPart.Position).Magnitude
+			local hillpartCanBeUsed = {['0'] = true, ['1'] = true}			
+		
+			for yOffest = 0, 1 do
+				for unitOrder=0,3 do
+					local xAxis = (unitOrder % 2 ) * 1.9
+					local zAxis = math.floor(unitOrder / 4 + 0.5) * 1.9
+					
+					local possiblePosition = hillPart.Position + Vector3.new(0, hillPart.Size.Y/2, 0) + Vector3.new( xAxis , 1 + 10 * yOffest, zAxis ) 
+
+					local possiblePositionRaycast = RaycastParams.new()
+					possiblePositionRaycast.FilterDescendantsInstances = {workspace._terrain.hill, workspace._terrain.terrain}
+					possiblePositionRaycast.FilterType = Enum.RaycastFilterType.Include
+					possiblePositionRaycast.IgnoreWater = true
+
+					local possiblePositionResult = workspace:Raycast(possiblePosition, Vector3.new(0,-2 + -15 * yOffest,0), possiblePositionRaycast)
+
+					if not possiblePositionResult or possiblePositionResult.Instance.Parent.Name ~= 'hill' then hillpartCanBeUsed[tostring(yOffest)] = false break end
+					
+				end
+			end
+			
+			
+			
+			if newdistance < distance and (hillpartCanBeUsed['0'] or hillpartCanBeUsed['1']) then 
+				distance = newdistance chosenHill = hillPart
+				chosenPoint = 1 if hillpartCanBeUsed['0'] then chosenPoint = 0 end
+			end
+				
+		end
+		
+		if not chosenHill then continue end
+		newHillPos = chosenHill.Position + Vector3.new(0, chosenHill.Size.Y/2 + 0.5, 0)
+		hillPoints[groundPoint] = {pos = newHillPos, inst = chosenHill, yOfsset = chosenPoint, used = false}
+	end
+end
+
+
+groundPoints = {}
+if not IsLobby then
+	local totalPoints = 0 for _,point in ipairs(workspace._BASES.pve.LANES['1']:GetChildren()) do if tonumber(point.Name) then totalPoints += 1 end end
+	local chosenPoints = 0
+	
+	for point = 1, totalPoints do
+		if chosenPoints >=6 then break end
+		
+		
+		local groundPoint = workspace._BASES.pve.LANES['1'][tostring(point)]
+		local Available = true
+		
+		for _, otherPoint in pairs(groundPoints) do
+			if (otherPoint - groundPoint.Position).Magnitude > 10 then continue end
+			Available = false break
+		end
+		
+		if not Available then continue end
+		
+		for onMap = 0,5 do
+
+			local possiblePosition = groundPoint.Position + Vector3.new( (onMap % 3 ) * 4 , 0, math.floor(onMap / 6 + 0.5) * 4 ) + Vector3.new(0,10,0)
+			
+			local possiblePositionRaycast = RaycastParams.new()
+			possiblePositionRaycast.FilterDescendantsInstances = {workspace._terrain.ground}
+			possiblePositionRaycast.FilterType = Enum.RaycastFilterType.Include
+			possiblePositionRaycast.IgnoreWater = true
+			
+			local possiblePositionResult = workspace:Raycast(possiblePosition, Vector3.new(0,-15,0), possiblePositionRaycast)
+			
+			if not possiblePositionResult then Available = false break end
+		end
+		
+		if not Available then continue end
+		
+		chosenPoints += 1
+		groundPoints[tostring(chosenPoints)] = groundPoint.Position
+		
+	end
+end
