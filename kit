@@ -19,20 +19,40 @@
 	
 	local Step = 1
 	
-	if Step == 1 then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lowgraphics"))()
-		Step +=1
-		if Step == 2 then
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
-			Step +=1
-			print('Loadder!!!')
-			if Step == 3 then
-				wait(10)
-				print('Teleport World 3')
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
-			end
-		end
+	_G.Teleport = true 
+
+	
+spawn(function()
+	while wait() do
+		pcall(function()
+			if _G.Teleport == true then  
+				if Step == 1 then
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lowgraphics"))()
+					Step +=1
+					wait(0.5)
+					print(Step 1)
+					if Step == 2 then
+						loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
+						Step +=1
+						wait(0.5)
+						print(Step 2)
+						print('Loadder!!!')
+						wait(10)
+						if Step == 3 and workspace.Characters.Tpno11.Energy.Value >= 1 then
+							print('Teleport World 3')
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+							Step +=1
+							if Step == 4 then
+								Step +=2
+								
+							end
+						end
+					end
+				end									
+			end	
+		end)
 	end
+end)
 	
     function topos(Pos)
         Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
