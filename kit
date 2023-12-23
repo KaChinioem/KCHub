@@ -30,12 +30,12 @@ spawn(function()
 					loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lowgraphics"))()
 					Step +=1
 					wait(0.5)
-					print(Step 1)
+					print('Step 1')
 					if Step == 2 then
 						loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
 						Step +=1
 						wait(0.5)
-						print(Step 2)
+						print('Step 2')
 						print('Loadder!!!')
 						wait(10)
 						if Step == 3 and workspace.Characters.Tpno11.Energy.Value >= 1 then
@@ -43,8 +43,7 @@ spawn(function()
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
 							Step +=1
 							if Step == 4 then
-								Step +=2
-								
+								Step = 5
 							end
 						end
 					end
