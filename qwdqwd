@@ -18,7 +18,7 @@ spawn(function()
 					if CashNew >= UpgradeCost then
 						game:GetService("ReplicatedStorage").Remote.UpgradeUnit:InvokeServer(v)
 					end
-				until v.Info.Upgrade.Value == 5 or CashNew < UpgradeCost
+				until v.Info.Upgrade.Value == 5 v.Name == "Shizaku" or CashNew < UpgradeCost
 			end
 		end
 
@@ -36,7 +36,7 @@ spawn(function()
 					if CashNew >= UpgradeCost then
 						game:GetService("ReplicatedStorage").Remote.UpgradeUnit:InvokeServer(v)
 					end
-				until v.Info.Upgrade.Value == 11 or CashNew < UpgradeCost
+				until v.Info.Upgrade.Value == 11 and v.Name == "Shining Star Idol" or CashNew < UpgradeCost
 			end
 		end
 		end
@@ -64,7 +64,7 @@ spawn(function()
 					if CashNew >= UpgradeCost then
 						game:GetService("ReplicatedStorage").Remote.UpgradeUnit:InvokeServer(v)
 					end
-				until v.Info.Upgrade.Value == 9 or CashNew < UpgradeCost
+				until v.Info.Upgrade.Value == 9 and v.Name == "Shizaku" or CashNew < UpgradeCost
 			end
 		end
 		end
@@ -91,7 +91,7 @@ spawn(function()
 						game:GetService("ReplicatedStorage").Remote.UpgradeUnit:InvokeServer(v)
 					end
 					
-				until v.Info.Upgrade.Value == 9 or CashNew < UpgradeCost
+				until v.Info.Upgrade.Value == 9 and v.Name == "Shizaku" or CashNew < UpgradeCost
 			end
 		end
 		end
@@ -104,15 +104,18 @@ spawn(function()
 					print(Step)	
 					local CashNew = tostring(game:GetService("Players").LocalPlayer.leaderstats.Cash.Value)
 					local UpgradeCost = tostring(workspace.Units.Shizaku.Info.UpgradeCost.Value) 	
-					
+					if Step == 36 then
+						_G.Turo = true
+					end
 					if CashNew >= UpgradeCost then
 						game:GetService("ReplicatedStorage").Remote.UpgradeUnit:InvokeServer(v)
 					end
 					
-				until v.Info.Upgrade.Value == 9 or CashNew < UpgradeCost
+				until v.Info.Upgrade.Value == 9 and v.Name == "Shizaku" or CashNew < UpgradeCost
 			end
 		end
 		end
+		
 			end)
 		end	
 	end
