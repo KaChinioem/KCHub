@@ -1,0 +1,14 @@
+spawn(function()
+	while wait() do
+		pcall(function()
+local Position = Vector2.new(549, 317)
+local Position1 = Vector2.new(647, 21)
+VirtualUser:Button1Down(Position, CurrentCamera.CFrame)    
+wait(0.1)   
+VirtualUser:Button1Up(Position, CurrentCamera.CFrame)
+VirtualUser:Button1Down(Position1, CurrentCamera.CFrame)
+wait(0.1)      
+VirtualUser:Button1Up(Position1, CurrentCamera.CFrame)	
+		end)
+	end
+end)
