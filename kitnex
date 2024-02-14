@@ -8,13 +8,20 @@
     repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
       
     if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-	
+	local UpgradeRace = true
 	for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
 		v.Function()
 	end
 	
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lowgraphics'))()
-	
+
+	if  UpgradeRace == true then
+		local args = {
+			[1] = "UpgradeRace",
+			[2] = "Buy"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+	end
 	if game:GetService("Players").LocalPlayer.PlayerGui.Main.Level.Text ~= nil then
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
 	end
