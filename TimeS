@@ -1,0 +1,74 @@
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+
+do
+    local ui = game.CoreGui:FindFirstChild("Time")
+    if ui then
+        ui:Destroy()
+     end
+end
+
+local RippleFPS = Instance.new("ScreenGui")
+local Framefps = Instance.new("Frame")
+local UICorner213 = Instance.new("UICorner")
+local TextLabelfps = Instance.new("TextLabel")
+local ImageLabelfps = Instance.new("ImageLabel")
+local Strokefps = Instance.new("UIStroke")
+
+RippleFPS.Name = "Time"
+RippleFPS.Parent = game.CoreGui
+RippleFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Framefps.Name = game.Players.LocalPlayer.DisplayName
+Framefps.Parent = RippleFPS
+Framefps.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Framefps.BorderSizePixel = 0
+--Framefps.BackgroundTransparency = 1.000
+Framefps.Position = UDim2.new(0.19, 0, 0, -27)
+Framefps.Size = UDim2.new(0, 311, 0, 25)
+
+UICorner213.Name = game.Players.LocalPlayer.DisplayName
+UICorner213.CornerRadius = UDim.new(0, 4)
+UICorner213.Parent = Framefps
+
+TextLabelfps.Name = game.Players.LocalPlayer.DisplayName
+TextLabelfps.Parent = Framefps
+TextLabelfps.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabelfps.BackgroundTransparency = 1.000
+TextLabelfps.Position = UDim2.new(0.310000002, 0, 0.234848887, 0)
+TextLabelfps.Size = UDim2.new(0, 124, 0, 15)
+TextLabelfps.Font = Enum.Font.GothamSemibold
+TextLabelfps.Text = "Time"
+TextLabelfps.TextColor3 = Color3.fromRGB(255,255,255)
+TextLabelfps.TextSize = 18.000
+TextLabelfps.TextXAlignment = Enum.TextXAlignment.Center
+
+spawn(function()
+	while wait() do
+		pcall(function()
+        	local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+        	local Hour = math.floor(GameTime/(60^2))%24
+        	local Minute = math.floor(GameTime/(60^1))%60
+        	local Second = math.floor(GameTime/(60^0))%60		
+			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
+		end)
+	end
+end)
+
+    function UpdateTime()
+        local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+        local Hour = math.floor(GameTime/(60^2))%24
+        local Minute = math.floor(GameTime/(60^1))%60
+        local Second = math.floor(GameTime/(60^0))%60
+        TimeServer:Set("Hr : "..Hour.." | Min : "..Minute.." | Sec : "..Second)
+    end
+    
+    spawn(function()
+        while task.wait() do
+            pcall(function()
+                UpdateTime()
+            end)
+        end
+    end)
