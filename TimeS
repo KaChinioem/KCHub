@@ -10,6 +10,11 @@ do
      end
 end
 
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local Mouse = Player:GetMouse()
+local X, Y = 0, 0
 local RippleFPS = Instance.new("ScreenGui")
 local Framefps = Instance.new("Frame")
 local UICorner213 = Instance.new("UICorner")
@@ -52,7 +57,7 @@ spawn(function()
         	local Hour = math.floor(GameTime/(60^2))%24
         	local Minute = math.floor(GameTime/(60^1))%60
         	local Second = math.floor(GameTime/(60^0))%60		
-			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
+			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec".. Mouse
 		end)
 	end
 end)
