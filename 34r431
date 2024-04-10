@@ -77,10 +77,8 @@ for i,v in pairs(misc) do
     end
 end
 wait()
-print("Function benchmark by HTDBarsi")
 print("--------------------")
 print("\ngot: "..points.." points \nmax: 52 points \nmissing functions:")
 for i,v in pairs(missing) do
-	setclipboard(tostring(v))
     print(v)
 end
