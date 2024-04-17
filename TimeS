@@ -79,11 +79,10 @@ spawn(function()
         	local Second = math.floor(GameTime/(60^0))%60	
 			local Lv = workspace.Camera.Tpno11.Head.NameLevelBBGUI.LevelFrame.TextLabel.Text
 			local Exp = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.XPBar.XPBarAmount.Text
-
+			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  ""..Lv.." "..Exp
+			PlayerStatus.Text =  ""..Lv.." "..Exp.."StarPass"..Pass
 		end)
 	end
 end)
-
