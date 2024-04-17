@@ -1,7 +1,5 @@
 repeat wait() until game.Players.LocalPlayer
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeShhr'))()
-
 do
     local ui = game.CoreGui:FindFirstChild("Time")
     if ui then
