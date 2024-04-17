@@ -1,8 +1,3 @@
------------------------------------------------
------------------------------------------------
------------------------------------------------
------------------------------------------------
-
 do
     local ui = game.CoreGui:FindFirstChild("Time")
     if ui then
@@ -10,40 +5,118 @@ do
      end
 end
 
-local RippleFPS = Instance.new("ScreenGui")
+local KFPS = Instance.new("ScreenGui")
 local Framefps = Instance.new("Frame")
 local UICorner213 = Instance.new("UICorner")
 local TextLabelfps = Instance.new("TextLabel")
+local Status = Instance.new("TextLabel")
+local PlayerStatus = Instance.new("TextLabel")
+local PlayerStatus1 = Instance.new("TextLabel")
+local PlayerStatus2 = Instance.new("TextLabel")
+local PlayerStatus3 = Instance.new("TextLabel")
+local PlayerStatus4 = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
 local Strokefps = Instance.new("UIStroke")
 
-RippleFPS.Name = "Time"
-RippleFPS.Parent = game.CoreGui
-RippleFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+KFPS.Name = "Time"
+KFPS.Parent = game.CoreGui
+KFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Framefps.Name = game.Players.LocalPlayer.DisplayName
-Framefps.Parent = RippleFPS
+Framefps.Parent = KFPS
 Framefps.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Framefps.BorderSizePixel = 0
 --Framefps.BackgroundTransparency = 1.000
-Framefps.Position = UDim2.new(0.19, 0, 0, -27)
-Framefps.Size = UDim2.new(0, 311, 0, 25)
+Framefps.Position = UDim2.new(0.08, 0, 0, 0)
+Framefps.Size = UDim2.new(0, 200, 0, 155)
 
 UICorner213.Name = game.Players.LocalPlayer.DisplayName
 UICorner213.CornerRadius = UDim.new(0, 4)
 UICorner213.Parent = Framefps
 
+Status.Name = game.Players.LocalPlayer.DisplayName
+Status.Parent = Framefps
+Status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Status.BackgroundTransparency = 1.000
+Status.Position = UDim2.new(0.31, 0, 0.235, -27)
+Status.Size = UDim2.new(0, 75, 0, 15)
+Status.Font = Enum.Font.GothamSemibold
+Status.Text = "Status"
+Status.TextColor3 = Color3.fromRGB(255,255,255)
+Status.TextSize = 18.000
+Status.TextXAlignment = Enum.TextXAlignment.Center
+
 TextLabelfps.Name = game.Players.LocalPlayer.DisplayName
 TextLabelfps.Parent = Framefps
 TextLabelfps.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabelfps.BackgroundTransparency = 1.000
-TextLabelfps.Position = UDim2.new(0.310000002, 0, 0.234848887, 0)
-TextLabelfps.Size = UDim2.new(0, 124, 0, 15)
+TextLabelfps.Position = UDim2.new(0.31, 0, 0.235, 0)
+TextLabelfps.Size = UDim2.new(0, 75, 0, 15)
 TextLabelfps.Font = Enum.Font.GothamSemibold
 TextLabelfps.Text = "Time"
 TextLabelfps.TextColor3 = Color3.fromRGB(255,255,255)
-TextLabelfps.TextSize = 18.000
+TextLabelfps.TextSize = 14.000
 TextLabelfps.TextXAlignment = Enum.TextXAlignment.Center
+
+PlayerStatus.Name = game.Players.LocalPlayer.DisplayName
+PlayerStatus.Parent = Framefps
+PlayerStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerStatus.BackgroundTransparency = 1.000
+PlayerStatus.Position = UDim2.new(0, 0, 0.235, 20)
+PlayerStatus.Size = UDim2.new(0, 75, 0, 15)
+PlayerStatus.Font = Enum.Font.GothamSemibold
+PlayerStatus.Text = "PlayerStatus"
+PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
+PlayerStatus.TextSize = 14.000
+PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
+
+PlayerStatus1.Name = game.Players.LocalPlayer.DisplayName
+PlayerStatus1.Parent = Framefps
+PlayerStatus1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerStatus1.BackgroundTransparency = 1.000
+PlayerStatus1.Position = UDim2.new(0, 0, 0.235, 40)
+PlayerStatus1.Size = UDim2.new(0, 75, 0, 15)
+PlayerStatus1.Font = Enum.Font.GothamSemibold
+PlayerStatus1.Text = "PlayerStatus"
+PlayerStatus1.TextColor3 = Color3.fromRGB(255,255,255)
+PlayerStatus1.TextSize = 14.000
+PlayerStatus1.TextXAlignment = Enum.TextXAlignment.Center
+
+PlayerStatus2.Name = game.Players.LocalPlayer.DisplayName
+PlayerStatus2.Parent = Framefps
+PlayerStatus2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerStatus2.BackgroundTransparency = 1.000
+PlayerStatus2.Position = UDim2.new(0, 0, 0.235, 60)
+PlayerStatus2.Size = UDim2.new(0, 75, 0, 15)
+PlayerStatus2.Font = Enum.Font.GothamSemibold
+PlayerStatus2.Text = "PlayerStatus"
+PlayerStatus2.TextColor3 = Color3.fromRGB(255,255,255)
+PlayerStatus2.TextSize = 14.000
+PlayerStatus2.TextXAlignment = Enum.TextXAlignment.Center
+
+PlayerStatus3.Name = game.Players.LocalPlayer.DisplayName
+PlayerStatus3.Parent = Framefps
+PlayerStatus3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerStatus3.BackgroundTransparency = 1.000
+PlayerStatus3.Position = UDim2.new(0, 0, 0.235, 80)
+PlayerStatus3.Size = UDim2.new(0, 75, 0, 15)
+PlayerStatus3.Font = Enum.Font.GothamSemibold
+PlayerStatus3.Text = "PlayerStatus"
+PlayerStatus3.TextColor3 = Color3.fromRGB(255,255,255)
+PlayerStatus3.TextSize = 14.000
+PlayerStatus3.TextXAlignment = Enum.TextXAlignment.Center
+
+PlayerStatus4.Name = game.Players.LocalPlayer.DisplayName
+PlayerStatus4.Parent = Framefps
+PlayerStatus4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerStatus4.BackgroundTransparency = 1.000
+PlayerStatus4.Position = UDim2.new(0, 0, 0.235, 100)
+PlayerStatus4.Size = UDim2.new(0, 75, 0, 15)
+PlayerStatus4.Font = Enum.Font.GothamSemibold
+PlayerStatus4.Text = "PlayerStatus"
+PlayerStatus4.TextColor3 = Color3.fromRGB(255,255,255)
+PlayerStatus4.TextSize = 14.000
+PlayerStatus4.TextXAlignment = Enum.TextXAlignment.Center
 
 spawn(function()
 	while wait() do
@@ -51,24 +124,21 @@ spawn(function()
         	local GameTime = math.floor(workspace.DistributedGameTime+0.5)
         	local Hour = math.floor(GameTime/(60^2))%24
         	local Minute = math.floor(GameTime/(60^1))%60
-        	local Second = math.floor(GameTime/(60^0))%60		
+        	local Second = math.floor(GameTime/(60^0))%60	
+			local Lv = workspace.Camera.Tpno11.Head.NameLevelBBGUI.LevelFrame.TextLabel.Text
+			local Exp = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.XPBar.XPBarAmount.Text
+			local StarPass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
+			local Coin = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins
+			local Gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount
+			local Stardust = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount
+			
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
+			
+			PlayerStatus.Text =  Lv.." "..Exp
+			PlayerStatus1.Text = "Coins "..Coin
+			PlayerStatus2.Text = "Gem "..Gems
+			PlayerStatus3.Text = "Stardust "..Stardust
+			PlayerStatus4.Text = "StarPass "..StarPass
 		end)
 	end
 end)
-
-    function UpdateTime()
-        local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-        local Hour = math.floor(GameTime/(60^2))%24
-        local Minute = math.floor(GameTime/(60^1))%60
-        local Second = math.floor(GameTime/(60^0))%60
-        TimeServer:Set("Hr : "..Hour.." | Min : "..Minute.." | Sec : "..Second)
-    end
-    
-    spawn(function()
-        while task.wait() do
-            pcall(function()
-                UpdateTime()
-            end)
-        end
-    end)
