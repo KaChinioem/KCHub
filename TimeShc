@@ -16,17 +16,23 @@ local StarPass = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local Lv = Instance.new("TextLabel")
 local Time = Instance.new("TextLabel")
+local UICorner213 = Instance.new("UICorner")
 
 KFPS.Name = "KFPS"
 KFPS.Parent = game.CoreGui
 KFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+Frame.Name = game.Players.LocalPlayer.DisplayName
 Frame.Parent = KFPS
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.101612903, 0, 0.055319149, 0)
-Frame.Size = UDim2.new(0, 176, 0, 168)
+--Frame.BackgroundTransparency = 1.000
+Frame.Position = UDim2.new(0.08, 0, 0, 0)
+Frame.Size = UDim2.new(0, 200, 0, 155)
+
+UICorner213.Name = game.Players.LocalPlayer.DisplayName
+UICorner213.CornerRadius = UDim.new(0, 4)
+UICorner213.Parent = Framefps
 
 Coin.Name = "Coin"
 Coin.Parent = Frame
