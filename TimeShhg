@@ -14,7 +14,6 @@ local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
-local OpenUI = Instance.new("TextButton")
 local Strokefps = Instance.new("UIStroke")
 
 KFPS.Name = "Time"
@@ -68,27 +67,6 @@ PlayerStatus.Text = ""
 PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
 PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
-
-OpenUI.Name = "OpenUI"
-OpenUI.Parent = Framefps
-OpenUI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-OpenUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
-OpenUI.BorderSizePixel = 0
-OpenUI.Position = UDim2.new(0.31, 0, 0.235, 80)
-OpenUI.Size = UDim2.new(0, 75, 0, 15)
-OpenUI.Font = Enum.Font.Gotham
-OpenUI.Text = "Open"
-OpenUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-OpenUI.TextSize = 14.000
-
-OpenUI.MouseButton1Click:Connect(function()
-game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Enabled  = true
-OpenUI.Text = "Close"
-if game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Enabled  == true then
-game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Enabled  = false
-OpenUI.Text = "Open"
-end
-end)
 
 spawn(function()
 	while wait() do
