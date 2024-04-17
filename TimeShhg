@@ -70,7 +70,7 @@ PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
 
 OpenUI.Name = "OpenUI"
-OpenUI.Parent = Frame
+OpenUI.Parent = Framefps
 OpenUI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 OpenUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
 OpenUI.BorderSizePixel = 0
