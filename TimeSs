@@ -82,7 +82,8 @@ spawn(function()
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  ""..Lv.." "..Exp.."StarPass"..Pass
+			PlayerStatus.Text =  ""..Lv.." "..Exp.."\nStarPass"..Pass
 		end)
 	end
 end)
+
