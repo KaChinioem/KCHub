@@ -70,54 +70,6 @@ PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
 PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
 
-PlayerStatus1.Name = game.Players.LocalPlayer.DisplayName
-PlayerStatus1.Parent = Framefps
-PlayerStatus1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlayerStatus1.BackgroundTransparency = 1.000
-PlayerStatus1.Position = UDim2.new(0, 0, 0.235, 40)
-PlayerStatus1.Size = UDim2.new(0, 75, 0, 15)
-PlayerStatus1.Font = Enum.Font.GothamSemibold
-PlayerStatus1.Text = "PlayerStatus"
-PlayerStatus1.TextColor3 = Color3.fromRGB(255,255,255)
-PlayerStatus1.TextSize = 14.000
-PlayerStatus1.TextXAlignment = Enum.TextXAlignment.Center
-
-PlayerStatus2.Name = game.Players.LocalPlayer.DisplayName
-PlayerStatus2.Parent = Framefps
-PlayerStatus2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlayerStatus2.BackgroundTransparency = 1.000
-PlayerStatus2.Position = UDim2.new(0, 0, 0.235, 60)
-PlayerStatus2.Size = UDim2.new(0, 75, 0, 15)
-PlayerStatus2.Font = Enum.Font.GothamSemibold
-PlayerStatus2.Text = "PlayerStatus"
-PlayerStatus2.TextColor3 = Color3.fromRGB(255,255,255)
-PlayerStatus2.TextSize = 14.000
-PlayerStatus2.TextXAlignment = Enum.TextXAlignment.Center
-
-PlayerStatus3.Name = game.Players.LocalPlayer.DisplayName
-PlayerStatus3.Parent = Framefps
-PlayerStatus3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlayerStatus3.BackgroundTransparency = 1.000
-PlayerStatus3.Position = UDim2.new(0, 0, 0.235, 80)
-PlayerStatus3.Size = UDim2.new(0, 75, 0, 15)
-PlayerStatus3.Font = Enum.Font.GothamSemibold
-PlayerStatus3.Text = "PlayerStatus"
-PlayerStatus3.TextColor3 = Color3.fromRGB(255,255,255)
-PlayerStatus3.TextSize = 14.000
-PlayerStatus3.TextXAlignment = Enum.TextXAlignment.Center
-
-PlayerStatus4.Name = game.Players.LocalPlayer.DisplayName
-PlayerStatus4.Parent = Framefps
-PlayerStatus4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlayerStatus4.BackgroundTransparency = 1.000
-PlayerStatus4.Position = UDim2.new(0, 0, 0.235, 100)
-PlayerStatus4.Size = UDim2.new(0, 75, 0, 15)
-PlayerStatus4.Font = Enum.Font.GothamSemibold
-PlayerStatus4.Text = "PlayerStatus"
-PlayerStatus4.TextColor3 = Color3.fromRGB(255,255,255)
-PlayerStatus4.TextSize = 14.000
-PlayerStatus4.TextXAlignment = Enum.TextXAlignment.Center
-
 spawn(function()
 	while wait() do
 		pcall(function()
@@ -127,11 +79,7 @@ spawn(function()
         	local Second = math.floor(GameTime/(60^0))%60	
 			local Lv = workspace.Camera.Tpno11.Head.NameLevelBBGUI.LevelFrame.TextLabel.Text
 			local Exp = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.XPBar.XPBarAmount.Text
-			local StarPass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
-			local Coin = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins.Text
-			local Gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text
-			local Stardust = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount.Text
-			
+
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
 			PlayerStatus.Text =  ""..Lv.." "..Exp
