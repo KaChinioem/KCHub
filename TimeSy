@@ -62,8 +62,8 @@ PlayerStatus.Name = game.Players.LocalPlayer.DisplayName
 PlayerStatus.Parent = Framefps
 PlayerStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerStatus.BackgroundTransparency = 1.000
-PlayerStatus.Position = UDim2.new(0, 0, 0.235, 20)
-PlayerStatus.Size = UDim2.new(0.31, 75, 0, 15)
+PlayerStatus.Position = UDim2.new(0.31, 0, 0.235, 20)
+PlayerStatus.Size = UDim2.new(0, 75, 0, 15)
 PlayerStatus.Font = Enum.Font.GothamSemibold
 PlayerStatus.Text = "PlayerStatus"
 PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
@@ -86,3 +86,4 @@ spawn(function()
 		end)
 	end
 end)
+
