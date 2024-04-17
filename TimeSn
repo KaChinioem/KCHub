@@ -13,10 +13,6 @@ local UICorner213 = Instance.new("UICorner")
 local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
-local Coin = Instance.new("TextLabel")
-local Gems = Instance.new("TextLabel")
-local Stardust = Instance.new("TextLabel")
-local StarPass = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
 local Strokefps = Instance.new("UIStroke")
 
@@ -64,61 +60,13 @@ PlayerStatus.Name = game.Players.LocalPlayer.DisplayName
 PlayerStatus.Parent = Framefps
 PlayerStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerStatus.BackgroundTransparency = 1.000
-PlayerStatus.Position = UDim2.new(0.31, 0, 0.235, 20)
+PlayerStatus.Position = UDim2.new(0.31, 0, 0.235, 100)
 PlayerStatus.Size = UDim2.new(0, 75, 0, 15)
 PlayerStatus.Font = Enum.Font.GothamSemibold
 PlayerStatus.Text = ""
 PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
 PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
-
-Coin.Name = game.Players.LocalPlayer.DisplayName
-Coin.Parent = Framefps
-Coin.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Coin.BackgroundTransparency = 1.000
-Coin.Position = UDim2.new(0.31, 0, 0.235, 40)
-Coin.Size = UDim2.new(0, 75, 0, 15)
-Coin.Font = Enum.Font.GothamSemibold
-Coin.Text = ""
-Coin.TextColor3 = Color3.fromRGB(255,255,255)
-Coin.TextSize = 14.000
-Coin.TextXAlignment = Enum.TextXAlignment.Center
-
-Gems.Name = game.Players.LocalPlayer.DisplayName
-Gems.Parent = Framefps
-Gems.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Gems.BackgroundTransparency = 1.000
-Gems.Position = UDim2.new(0.31, 0, 0.235, 60)
-Gems.Size = UDim2.new(0, 75, 0, 15)
-Gems.Font = Enum.Font.GothamSemibold
-Gems.Text = ""
-Gems.TextColor3 = Color3.fromRGB(255,255,255)
-Gems.TextSize = 14.000
-Gems.TextXAlignment = Enum.TextXAlignment.Center
-
-Stardust.Name = game.Players.LocalPlayer.DisplayName
-Stardust.Parent = Framefps
-Stardust.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Stardust.BackgroundTransparency = 1.000
-Stardust.Position = UDim2.new(0.31, 0, 0.235, 80)
-Stardust.Size = UDim2.new(0, 75, 0, 15)
-Stardust.Font = Enum.Font.GothamSemibold
-Stardust.Text = ""
-Stardust.TextColor3 = Color3.fromRGB(255,255,255)
-Stardust.TextSize = 14.000
-Stardust.TextXAlignment = Enum.TextXAlignment.Center
-
-StarPass.Name = game.Players.LocalPlayer.DisplayName
-StarPass.Parent = Framefps
-StarPass.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-StarPass.BackgroundTransparency = 1.000
-StarPass.Position = UDim2.new(0.31, 0, 0.235, 100)
-StarPass.Size = UDim2.new(0, 75, 0, 15)
-StarPass.Font = Enum.Font.GothamSemibold
-StarPass.Text = ""
-StarPass.TextColor3 = Color3.fromRGB(255,255,255)
-StarPass.TextSize = 14.000
-StarPass.TextXAlignment = Enum.TextXAlignment.Center
 
 spawn(function()
 	while wait() do
@@ -135,11 +83,7 @@ spawn(function()
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  ""..Lv.." "..Exp
-			Coin.Text =  "Coins "..Coins
-			Gems.Text =  "Gems "..Gem
-			Stardust.Text =  "Stardust "..Stardusts
-			StarPass.Text =  "StarPass "..Pass
+			PlayerStatus.Text =  ""..Lv.." "..Exp.."\nCoins "..Coins.."\nGem "..Gem.."\nStardust "..Stardusts.."\nStarPass "..Pass
 		end)
 	end
 end)
