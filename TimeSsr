@@ -1,3 +1,5 @@
+if not game:IsLoaded() then game.Loaded:Wait() end
+
 do
     local ui = game.CoreGui:FindFirstChild("Time")
     if ui then
@@ -82,7 +84,7 @@ spawn(function()
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  ""..Lv.." "..Exp.."\nStarPass"..Pass
+			PlayerStatus.Text =  ""..Lv.." "..Exp.."\nStarPass "..Pass
 		end)
 	end
 end)
