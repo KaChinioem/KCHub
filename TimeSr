@@ -11,10 +11,10 @@ local UICorner213 = Instance.new("UICorner")
 local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
-local PlayerStatus1 = Instance.new("TextLabel")
-local PlayerStatus2 = Instance.new("TextLabel")
-local PlayerStatus3 = Instance.new("TextLabel")
-local PlayerStatus4 = Instance.new("TextLabel")
+--local PlayerStatus1 = Instance.new("TextLabel")
+--local PlayerStatus2 = Instance.new("TextLabel")
+--local PlayerStatus3 = Instance.new("TextLabel")
+--local PlayerStatus4 = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
 local Strokefps = Instance.new("UIStroke")
 
@@ -134,7 +134,8 @@ spawn(function()
 			
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  Lv.." "..Exp
+			PlayerStatus.Text =  ""..Lv.." "..Exp
 		end)
 	end
 end)
+
