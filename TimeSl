@@ -129,14 +129,14 @@ spawn(function()
         	local Second = math.floor(GameTime/(60^0))%60	
 			local Lv = workspace.Camera.Tpno11.Head.NameLevelBBGUI.LevelFrame.TextLabel.Text
 			local Exp = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.XPBar.XPBarAmount.Text
-			local Coin = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins.Amount.Text
+			local Coins = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins.Amount.Text
 			local Gem = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text
 			local Stardusts = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount.Text		 
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
 			PlayerStatus.Text =  ""..Lv.." "..Exp
-			Coin.Text =  "Coins "..Coin
+			Coin.Text =  "Coins "..Coins
 			Gems.Text =  "Gems "..Gem
 			Stardust.Text =  "Stardust "..Stardusts
 			StarPass.Text =  "StarPass "..Pass
