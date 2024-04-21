@@ -132,9 +132,12 @@ spawn(function()
 			local StardustNew = tostring(oldPlayerStats.Stardusts - Stardusts)
 			local CoinsNew = tostring(oldPlayerStats.Coins - Coins)
 			
-			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
+			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text = ""..Lv.." "..Exp
+			PlayerStatus.Text   = ""..Lv.." "..Exp
+			GemStatus.Text      = "Gem"..Gem.." (+"..GemsNew..")"
+			CoinStatus.Text     = "Coin"..Coins.." (+"..CoinsNew..")"
+			StardustStatus.Text = "Stardust"..Stardusts.." (+"..StardustNew..")"
 		end)
 	end
 end)
