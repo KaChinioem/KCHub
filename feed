@@ -12,7 +12,7 @@ local function feedUntil95Percent()
             local percentStr = workspace.Shiki.OrbSpawn.Feed.ObjectText
 
             if percentStr then
-                print("Current percent:", percentStr)
+                warn("Current percent:", percentStr)
 
                 if percentStr == '90%' then
                     for i = 1, 2 do
