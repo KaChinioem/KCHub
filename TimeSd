@@ -13,6 +13,7 @@ local UICorner213 = Instance.new("UICorner")
 local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
+local GemStatus = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
 local OpenUI = Instance.new("TextButton")
 local Strokefps = Instance.new("UIStroke")
@@ -61,13 +62,25 @@ PlayerStatus.Name = game.Players.LocalPlayer.DisplayName
 PlayerStatus.Parent = Framefps
 PlayerStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerStatus.BackgroundTransparency = 1.000
-PlayerStatus.Position = UDim2.new(0.31, 0, 0.235, 40)
+PlayerStatus.Position = UDim2.new(0.31, 0, 0.235, 20)
 PlayerStatus.Size = UDim2.new(0, 75, 0, 15)
 PlayerStatus.Font = Enum.Font.GothamSemibold
-PlayerStatus.Text = ""
+PlayerStatus.Text = "PlayerStatus"
 PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
 PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
+
+GemStatus.Name = game.Players.LocalPlayer.DisplayName
+GemStatus.Parent = Framefps
+GemStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GemStatus.BackgroundTransparency = 1.000
+GemStatus.Position = UDim2.new(0.31, 0, 0.235, 40)
+GemStatus.Size = UDim2.new(0, 75, 0, 15)
+GemStatus.Font = Enum.Font.GothamSemibold
+GemStatus.Text = "GemStatus"
+GemStatus.TextColor3 = Color3.fromRGB(255,255,255)
+GemStatus.TextSize = 14.000
+GemStatus.TextXAlignment = Enum.TextXAlignment.Center
 
 local oldPlayerStats = {
 	Gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text,
@@ -88,6 +101,11 @@ spawn(function()
 			local Gem = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text
 			local Stardusts = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount.Text		 
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
+			
+			local GemsNew = tostring(oldPlayerStats.Gems - Gem)
+			local StardustNew = tostring(oldPlayerStats.Stardusts - Stardusts)
+			local CoinsNew = tostring(oldPlayerStats.Coins - Coins)
+			
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
 			PlayerStatus.Text = tostring(Lv.." "..Exp.."\nConis "..Conis.."\nGem "..Gem.."\nStardust "..Stardusts.."\nStarPass "..Pass)
