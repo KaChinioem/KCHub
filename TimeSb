@@ -135,9 +135,9 @@ spawn(function()
 			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
 			PlayerStatus.Text   = ""..Lv.." "..Exp
-			GemStatus.Text      = "Gem"..Gem.." (+"..GemsNew..")"
-			CoinStatus.Text     = "Coin"..Coins.." (+"..CoinsNew..")"
-			StardustStatus.Text = "Stardust"..Stardusts.." (+"..StardustNew..")"
+			GemStatus.Text      = "Gem"..Gem
+			CoinStatus.Text     = "Coin"..Coins
+			StardustStatus.Text = "Stardust"..Stardusts
 		end)
 	end
 end)
