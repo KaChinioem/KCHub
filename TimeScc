@@ -128,9 +128,9 @@ spawn(function()
 			local Stardusts = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount.Text		 
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			
-			local GemsNew = tostring(Gem - oldPlayerStats.Gems)
-			local StardustNew = tostring(Stardusts - oldPlayerStats.Stardusts)
-			local CoinsNew = tostring(Coins - oldPlayerStats.Coins)
+			local GemsNew = tostring(oldPlayerStats.Gems - Gem)
+			local StardustNew = tostring(oldPlayerStats.Stardusts - Stardusts)
+			local CoinsNew = tostring(oldPlayerStats.Coins - Coins)
 			
 			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
