@@ -12,21 +12,17 @@ local function feedUntil95Percent()
             local percentStr = workspace.Shiki.OrbSpawn.Feed.ObjectText
 
             if percentStr then
-                warn("Current percent:", percentStr)
+                print("Current percent:", percentStr)
 
                 if percentStr == '90%' then
                     for i = 1, 2 do
                         game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(useSoulRemote))
-						warn("Use Soul")
-						warn("Use Soul")
 						warn("Use Soul")
                     end
                     break
                 else
                     for i = 1, 2 do
                         game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(feedRemote))
-						warn("Feed Soul")
-						warn("Feed Soul")
 						warn("Feed Soul")
 					end
                 end
