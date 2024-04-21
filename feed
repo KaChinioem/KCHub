@@ -38,3 +38,15 @@ local function feedUntil95Percent()
         wait(1)
     end
 end
+
+local function checkForShiki()
+    local shiki = workspace:FindFirstChild("Shiki")
+    if shiki then
+        feedUntil95Percent()
+    else
+        wait(5)
+        checkForShiki()
+    end
+end
+
+checkForShiki()
