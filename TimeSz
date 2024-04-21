@@ -14,6 +14,7 @@ local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
+local OpenUI = Instance.new("TextButton")
 local Strokefps = Instance.new("UIStroke")
 
 KFPS.Name = "Time"
@@ -68,6 +69,12 @@ PlayerStatus.TextColor3 = Color3.fromRGB(255,255,255)
 PlayerStatus.TextSize = 14.000
 PlayerStatus.TextXAlignment = Enum.TextXAlignment.Center
 
+local oldPlayerStats = {
+	Gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text,
+	Coins = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins.Amount.Text,
+	Stardusts = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Stardust.Amount.Text,
+}
+
 spawn(function()
 	while wait() do
 		pcall(function()
@@ -83,7 +90,7 @@ spawn(function()
 			local Pass = game:GetService("Players").LocalPlayer.PlayerGui.TowerPassRewards.Main.Page.Main.Top.CurrentTierBox.Tier.Text
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text =  ""..Lv.." "..Exp.."\nCoins "..Coins.."\nGem "..Gem.."\nStardust "..Stardusts.."\nStarPass "..Pass
+			PlayerStatus.Text = tostring(Lv.." "..Exp.."\nConis "..Conis.."\nGem "..Gem.."\nStardust "..Stardusts.."\nStarPass "..Pass)
 		end)
 	end
 end)
