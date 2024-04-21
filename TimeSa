@@ -14,6 +14,8 @@ local TextLabelfps = Instance.new("TextLabel")
 local Status = Instance.new("TextLabel")
 local PlayerStatus = Instance.new("TextLabel")
 local GemStatus = Instance.new("TextLabel")
+local CoinStatus = Instance.new("TextLabel")
+local StardustStatus = Instance.new("TextLabel")
 local ImageLabelfps = Instance.new("ImageLabel")
 local OpenUI = Instance.new("TextButton")
 local Strokefps = Instance.new("UIStroke")
@@ -82,6 +84,30 @@ GemStatus.TextColor3 = Color3.fromRGB(255,255,255)
 GemStatus.TextSize = 14.000
 GemStatus.TextXAlignment = Enum.TextXAlignment.Center
 
+CoinStatus.Name = game.Players.LocalPlayer.DisplayName
+CoinStatus.Parent = Framefps
+CoinStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CoinStatus.BackgroundTransparency = 1.000
+CoinStatus.Position = UDim2.new(0.31, 0, 0.235, 60)
+CoinStatus.Size = UDim2.new(0, 75, 0, 15)
+CoinStatus.Font = Enum.Font.GothamSemibold
+CoinStatus.Text = "CoinStatus"
+CoinStatus.TextColor3 = Color3.fromRGB(255,255,255)
+CoinStatus.TextSize = 14.000
+CoinStatus.TextXAlignment = Enum.TextXAlignment.Center
+
+StardustStatus.Name = game.Players.LocalPlayer.DisplayName
+StardustStatus.Parent = Framefps
+StardustStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StardustStatus.BackgroundTransparency = 1.000
+StardustStatus.Position = UDim2.new(0.31, 0, 0.235, 80)
+StardustStatus.Size = UDim2.new(0, 75, 0, 15)
+StardustStatus.Font = Enum.Font.GothamSemibold
+StardustStatus.Text = "StardustStatus"
+StardustStatus.TextColor3 = Color3.fromRGB(255,255,255)
+StardustStatus.TextSize = 14.000
+StardustStatus.TextXAlignment = Enum.TextXAlignment.Center
+
 local oldPlayerStats = {
 	Gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Gem.Amount.Text,
 	Coins = game:GetService("Players").LocalPlayer.PlayerGui.HUD.BottomFrame.CurrencyList.Coins.Amount.Text,
@@ -108,7 +134,7 @@ spawn(function()
 			
 			TextLabelfps.Text = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
-			PlayerStatus.Text = tostring(Lv.." "..Exp.."\nConis "..Conis.."\nGem "..Gem.."\nStardust "..Stardusts.."\nStarPass "..Pass)
+			PlayerStatus.Text = ""..Lv.." "..Exp
 		end)
 	end
 end)
