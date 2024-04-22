@@ -1,8 +1,9 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/feed"))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()
 
 
 
