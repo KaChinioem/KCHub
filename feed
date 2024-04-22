@@ -1,18 +1,3 @@
-local function EaterJoin()
-	if game.GameId ~= 4996049426 then 
-		if game.JobId == "8f33aeb2-e280-49a1-af24-e02e803b8163" then
-			local tweenService = game:GetService("TweenService")
-			local targetCFrame = CFrame.new(-71.0405655, 106.477287, -2258.77197, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-			
-			local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-			
-			local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(1), {CFrame = targetCFrame})
-			
-			tween:Play()
-		end	
-	end
-end	
-
 local function feedUntil95Percent()
     local feedRemote = {
         [1] = "GiveSoul"
@@ -59,14 +44,9 @@ local function checkfunction()
     else
         wait(5)
         checkfunction()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
     end
 	
-    if checkEater then
-        EaterJoin()
-    else
-        wait(5)
-        checkfunction()
-    end	
 end
 
 checkfunction()
