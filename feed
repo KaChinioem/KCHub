@@ -36,22 +36,14 @@ local function feedUntil95Percent()
 end
 
 local function checkfunction()
-    local shiki = workspace:FindFirstChild("Shiki")
-	local checkEater = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-	
+    local shiki = workspace:FindFirstChild("Shiki")	
+
     if shiki then
         feedUntil95Percent()
     else
         wait(5)
         checkfunction()
     end
-	
-    if checkEater then
-        EaterJoin()
-    else
-        wait(5)
-        checkfunction()
-    end	
 end
 
 checkfunction()
