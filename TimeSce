@@ -1,0 +1,85 @@
+repeat wait() until game.Players.LocalPlayer
+
+do
+    local ui = game.CoreGui:FindFirstChild("Time")
+    if ui then
+        ui:Destroy()
+     end
+end
+
+local KFPS = Instance.new("ScreenGui")
+local Framefps = Instance.new("Frame")
+local UICorner213 = Instance.new("UICorner")
+local TextLabelfps = Instance.new("TextLabel")
+local Status = Instance.new("TextLabel")
+local EggStatus = Instance.new("TextLabel")
+local ImageLabelfps = Instance.new("ImageLabel")
+local OpenUI = Instance.new("TextButton")
+local Strokefps = Instance.new("UIStroke")
+
+KFPS.Name = "Time"
+KFPS.Parent = game.CoreGui
+KFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Framefps.Name = game.Players.LocalPlayer.DisplayName
+Framefps.Parent = KFPS
+Framefps.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Framefps.BorderSizePixel = 0
+--Framefps.BackgroundTransparency = 1.000
+Framefps.Position = UDim2.new(0.08, 0, 0, 0)
+Framefps.Size = UDim2.new(0, 200, 0, 155)
+
+UICorner213.Name = game.Players.LocalPlayer.DisplayName
+UICorner213.CornerRadius = UDim.new(0, 4)
+UICorner213.Parent = Framefps
+
+Status.Name = game.Players.LocalPlayer.DisplayName
+Status.Parent = Framefps
+Status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Status.BackgroundTransparency = 1.000
+Status.Position = UDim2.new(0.31, 0, 0.235, -27)
+Status.Size = UDim2.new(0, 75, 0, 15)
+Status.Font = Enum.Font.GothamSemibold
+Status.Text = "Status"
+Status.TextColor3 = Color3.fromRGB(255,255,255)
+Status.TextSize = 18.000
+Status.TextXAlignment = Enum.TextXAlignment.Center
+
+TextLabelfps.Name = game.Players.LocalPlayer.DisplayName
+TextLabelfps.Parent = Framefps
+TextLabelfps.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabelfps.BackgroundTransparency = 1.000
+TextLabelfps.Position = UDim2.new(0.31, 0, 0.235, 0)
+TextLabelfps.Size = UDim2.new(0, 75, 0, 15)
+TextLabelfps.Font = Enum.Font.GothamSemibold
+TextLabelfps.Text = "Time"
+TextLabelfps.TextColor3 = Color3.fromRGB(255,255,255)
+TextLabelfps.TextSize = 14.000
+TextLabelfps.TextXAlignment = Enum.TextXAlignment.Center
+
+EggStatus.Name = game.Players.LocalPlayer.DisplayName
+EggStatus.Parent = Framefps
+EggStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+EggStatus.BackgroundTransparency = 1.000
+EggStatus.Position = UDim2.new(0.31, 0, 0.235, 20)
+EggStatus.Size = UDim2.new(0, 75, 0, 15)
+EggStatus.Font = Enum.Font.GothamSemibold
+EggStatus.Text = "EggStatus"
+EggStatus.TextColor3 = Color3.fromRGB(255,255,255)
+EggStatus.TextSize = 14.000
+EggStatus.TextXAlignment = Enum.TextXAlignment.Center
+
+spawn(function()
+	while wait() do
+		pcall(function()
+        	local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+        	local Hour = math.floor(GameTime/(60^2))%24
+        	local Minute = math.floor(GameTime/(60^1))%60
+        	local Second = math.floor(GameTime/(60^0))%60	
+
+			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
+
+		end)
+	end
+end)
+
