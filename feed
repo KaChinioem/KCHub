@@ -54,6 +54,8 @@ local function checkfunction()
     end	
 end
 
+checkfunction()
+
 task.spawn(function() 
 	pcall(function()
 		
