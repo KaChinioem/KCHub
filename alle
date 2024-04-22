@@ -2,7 +2,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/feed"))()
 
-wait(5)
+wait(3)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()
 
