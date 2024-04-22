@@ -44,7 +44,6 @@ local function checkfunction()
     else
         wait(5)
         checkfunction()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
     end
 	
 end
