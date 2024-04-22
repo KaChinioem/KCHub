@@ -76,9 +76,8 @@ spawn(function()
         	local Hour = math.floor(GameTime/(60^2))%24
         	local Minute = math.floor(GameTime/(60^1))%60
         	local Second = math.floor(GameTime/(60^0))%60	
-		if workspace.Shiki.OrbSpawn and workspace.Shiki.OrbSpawn.Feed then
-		   local percentStr = workspace.Shiki.OrbSpawn.Feed.ObjectText
-		end
+		local percentStr = workspace:FindFirstChild("Shiki").OrbSpawn.Feed.ObjectText
+
 			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
 			
 			PlayerStatus.Text   = ""..Lv.." "..Exp
