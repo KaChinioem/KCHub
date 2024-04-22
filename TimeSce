@@ -79,8 +79,7 @@ spawn(function()
 		local percentStr = workspace:FindFirstChild("Shiki").OrbSpawn.Feed.ObjectText
 
 			TextLabelfps.Text   = "Time : " ..Hour.. " Hr | "..Minute.." Min |  " ..Second.." Sec"
-			
-			PlayerStatus.Text   = ""..Lv.." "..Exp
+
 			EggStatus.Text      = "Current percent: "..percentStr
 		end)
 	end
