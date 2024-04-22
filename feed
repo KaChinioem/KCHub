@@ -61,7 +61,7 @@ local function checkfunction()
         checkfunction()
     end
 	
-    if checkEater and game.GameId == 4996049426 then
+    if checkEater then
         EaterJoin()
     else
         wait(5)
