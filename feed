@@ -46,7 +46,24 @@ local function checkfunction()
         checkfunction()
     end
 	
+    if checkEater then
+        EaterJoin()
+    else
+        wait(5)
+        checkfunction()
+    end	
 end
 
-checkfunction()
-
+task.spawn(function() 
+	pcall(function()
+		
+		if queue_on_teleport then
+			local EaterFeed = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/feed"))()'
+			queue_on_teleport(EaterFeed)
+			
+			local EaterJoin = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()'
+			queue_on_teleport(EaterJoin)			
+		end
+		
+	end)	
+end)
