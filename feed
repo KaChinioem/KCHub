@@ -56,7 +56,10 @@ task.spawn(function()
 			queue_on_teleport(EaterFeed)
 			
 			local EaterJoin = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()'
-			queue_on_teleport(EaterJoin)			
+			queue_on_teleport(EaterJoin)	
+
+			local EaterStatus = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()'
+			queue_on_teleport(EaterStatus)
 		end
 		
 	end)	
