@@ -1,3 +1,11 @@
+spawn(function()
+	while wait() do
+		pcall(function()
+		  game:GetService("CoreGui").PlayerList.Enabled = false
+		end)
+	end
+end)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
