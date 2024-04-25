@@ -74,6 +74,7 @@ EggStatus.TextXAlignment = Enum.TextXAlignment.Center
 spawn(function()
 	while wait() do
 		pcall(function()
+		game:GetService("CoreGui").PlayerList.Enabled = false
         	local GameTime = math.floor(workspace.DistributedGameTime+0.5)
         	local Hour = math.floor(GameTime/(60^2))%24
         	local Minute = math.floor(GameTime/(60^1))%60
