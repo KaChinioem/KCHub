@@ -7,5 +7,5 @@ if game.GameId ~= 4996049426 then
 
     local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(1), {CFrame = targetCFrame})
 
-    tween:Play()
+    ##tween:Play()
 end
