@@ -1,11 +1,11 @@
 if game.GameId ~= 4996049426 then 
     local tweenService = game:GetService("TweenService")
 
-    local targetCFrame = CFrame.new(-71.0405655, 106.477287, -2258.77197, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    local targetCFrame = CFrame.new(2647, -115, -1989)
 
     local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
     local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(1), {CFrame = targetCFrame})
 
-    ##tween:Play()
+    tween:Play()
 end
