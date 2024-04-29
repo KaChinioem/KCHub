@@ -6,12 +6,13 @@ spawn(function()
 	end
 end)
 
+warn("Script")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/cew"))()
-
+warn("Reload")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/reload"))()
-
+warn("JoinMap")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
-
+warn("FeedEgg")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/feed"))()
 
 
