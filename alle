@@ -5,6 +5,7 @@ spawn(function()
 		end)
 	end
 end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/cew"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
 
