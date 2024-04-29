@@ -1,0 +1,22 @@
+local cloneref = cloneref or function(o) return o end
+Players = cloneref(game:GetService("Players"))
+
+queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+
+local TeleportCheck = false
+local KeepInfYield = false
+
+spawn(function()
+	while wait() do
+		pcall(function()
+		  game:GetService("CoreGui").PlayerList.Enabled = false
+		end)
+	end
+end)
+
+Players.LocalPlayer.OnTeleport:Connect(function(State)
+	if KeepInfYield and (not TeleportCheck) and queueteleport then
+		TeleportCheck = true
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/KaChinioem/KCHub/main/reload'))()")
+	end
+end)
