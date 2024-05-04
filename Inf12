@@ -16,7 +16,7 @@ local function feedUntil95Percent()
 
     local Sell = {
         [1] = "Sell",
-		[2] = workspace:WaitForChild("Unti"):WaitForChild("Narancia")
+		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
     }
 
     while true do
