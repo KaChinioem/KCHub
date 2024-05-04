@@ -1,0 +1,89 @@
+local Wave = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text == "Wave 50"
+local GameSpped = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text == "3X"
+
+local function UnitInf()
+    local GameSpped = {
+        [1] = "SpeedChange",
+		[2] = true
+    }
+
+    local Sell = {
+        [1] = "Sell",
+		[2] = workspace:WaitForChild("Unti"):WaitForChild("Narancia")
+    }
+
+    local Upgrade = {
+        [1] = "Upgrade",
+		[2] = workspace:WaitForChild("Unti"):WaitForChild("Narancia")
+    }
+
+	local Summon = {
+		[1] = "Summon",
+		[2] = {
+			["Rotation"] = 0,
+			["cframe"] = CFrame.new(72.32760620117188, 179.77394104003906, 1288.9603271484375, 1, 0, -1.9312004440052988e-08, 0, 1, 0, -1.9312004440052988e-08, 0, 1),
+			["Unit"] = "Narancia"
+		}
+	}
+
+    while true do
+        if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
+            local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
+
+            if percentStr then
+                if percentStr == '3X' then
+                    for i = 1, 2 do
+						warn("GameSpped 3X")
+                    end
+                    break
+                else
+                    for i = 1, 2 do
+                        game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(GameSpped))
+						warn("GameSpped 1X-2X")
+					end
+                end
+            else
+                warn("Error GameSpped")
+            end
+        end
+
+        if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
+            local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
+
+            if percentStr then
+                if percentStr == 'Wave 50' then
+                    for i = 1, 2 do
+						game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(Sell))
+						warn("Sell Unit")
+                    end
+                    break
+                else
+                    for i = 1, 2 do
+                        game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(Summon))
+						warn("Summon")
+					end					
+                    for i = 1, 2 do
+                        game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(Upgrade))
+						warn("Upgrade")
+					end
+                end
+            else
+                warn("Error Sell or Summon or Upgrade")
+            end
+        end
+
+        wait(1)
+    end
+end
+
+local function checkfunction()
+    local FastForward = game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("FastForward")
+	
+    if FastForward then
+        UnitInf()
+    else
+        wait(5)
+        checkfunction()
+    end
+	
+end
