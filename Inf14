@@ -1,5 +1,4 @@
 local function feedUntil95Percent()
-
 	local Summon = {
 		[1] = "Summon",
 		[2] = {
@@ -9,11 +8,11 @@ local function feedUntil95Percent()
 		}
 	}
 	
-    local SellUnit = {
-        [1] = "Sell",
+	local UpgradeUnit = {
+		[1] = "Upgrade",
 		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
-    }
-
+	}	
+	
     while true do
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
