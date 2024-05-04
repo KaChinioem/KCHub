@@ -1,4 +1,4 @@
-local function checkfunctionUnit()
+local function feedUntil95Percent()
     local GameSpped = {
         [1] = "SpeedChange",
 		[2] = true
@@ -78,7 +78,7 @@ local function checkfunction()
     local Fast = game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("FastForward")
 	
     if Fast then
-        checkfunctionUnit()
+        feedUntil95Percent()
     else
         wait(5)
         checkfunction()
