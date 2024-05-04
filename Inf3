@@ -1,4 +1,4 @@
-local function UnitInf()
+local function checkfunctionUnit()
     local GameSpped = {
         [1] = "SpeedChange",
 		[2] = true
@@ -78,7 +78,7 @@ local function checkfunction()
     local Fast = game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("FastForward")
 	
     if Fast then
-        UnitInf()
+        checkfunctionUnit()
     else
         wait(5)
         checkfunction()
