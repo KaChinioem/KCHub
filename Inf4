@@ -6,12 +6,12 @@ local function checkfunctionUnit()
 
     local Sell = {
         [1] = "Sell",
-		[2] = workspace:WaitForChild("Unti"):WaitForChild("Narancia")
+		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
     }
 
     local Upgrade = {
         [1] = "Upgrade",
-		[2] = workspace:WaitForChild("Unti"):WaitForChild("Narancia")
+		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
     }
 
 	local Summon = {
