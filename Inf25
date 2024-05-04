@@ -35,12 +35,12 @@ local function feedUntil95Percent()
         end
 		
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
-            local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
+            local percentStrWave = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
 			
 			game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Summon))
 			
-            if percentStr then
-                if percentStr == 'Wave 50' then
+            if percentStrWave then
+                if percentStrWave == 'Wave 50' then
                     for i = 1, 2 do
 					if workspace.Unit:FindFirstChild("Narancia") then
 							local SellUnit = {
