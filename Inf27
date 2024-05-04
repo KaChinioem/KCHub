@@ -43,12 +43,12 @@ local function feedUntil95Percent()
                 if percentStrWave == 'Wave 50' then
                     for i = 1, 2 do
 					if workspace.Unit:FindFirstChild("Narancia") then
-							local SellUnit = {
+							local args = {
 								[1] = "Sell",
 								[2] =  workspace:WaitForChild("Unit"):WaitForChild("Narancia")
 							}
 
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(SellUnit))
+							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
 							warn("Sell Unit")
 						end
 					end
@@ -56,12 +56,12 @@ local function feedUntil95Percent()
                 else
 					for i = 1, 2 do
 					if workspace.Unit:FindFirstChild("Narancia") then
-							local UpgradeUnit = {
+							local args = {
 								[1] = "Upgrade",
 								[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
 							}
 
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):InvokeServer(unpack(UpgradeUnit))
+							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(args))
 							warn("Upgrade")
 						end	
 					end		
