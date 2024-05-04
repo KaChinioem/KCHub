@@ -1,4 +1,9 @@
 local function feedUntil95Percent()
+    local GameSpped = {
+        [1] = "SpeedChange",
+		[2] = true
+    }
+	
 	local Summon = {
 		[1] = "Summon",
 		[2] = {
@@ -7,8 +12,38 @@ local function feedUntil95Percent()
 			["Unit"] = "Narancia"
 		}
 	}
+	
+    local Sell = {
+        [1] = "Sell",
+		[2] = workspace:FindFirstChild("Unti"):FindFirstChild("Narancia")
+    }
 
+	local Upgrade = {
+		[1] = "Upgrade",
+		[2] = workspace:FindFirstChild("Unit"):FindFirstChild("Narancia")
+	}
+	
     while true do
+        if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
+            local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
+
+            if percentStr then
+                if percentStr == '3X' then
+                    for i = 1, 2 do
+						warn("GameSpped 3X")
+                    end
+                    break
+                else
+                    for i = 1, 2 do
+                        game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(GameSpped))
+						warn("GameSpped 1X-2X")
+					end
+                end
+            else
+                warn("Error GameSpped")
+            end
+        end
+		
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
 			
