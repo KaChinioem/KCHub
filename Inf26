@@ -61,7 +61,7 @@ local function feedUntil95Percent()
 								[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
 							}
 
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(UpgradeUnit))
+							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):InvokeServer(unpack(UpgradeUnit))
 							warn("Upgrade")
 						end	
 					end		
