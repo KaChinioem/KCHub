@@ -15,14 +15,15 @@ local function feedUntil95Percent()
 	
     local Sell = {
         [1] = "Sell",
-		[2] = workspace.Unit:FindFirstChild("Narancia")
+		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
     }
 
 	local Upgrade = {
 		[1] = "Upgrade",
-		[2] = workspace.Unit:FindFirstChild("Narancia")
+		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
 	}
 	
+
     while true do
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
@@ -57,10 +58,12 @@ local function feedUntil95Percent()
                     end
                     break
                 else
-                    for i = 1, 2 do
-                        game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(UpgradeUnit))
-						warn("Upgrade")
-					end				
+					if workspace.Unit:FindFirstChild("Narancia") then
+						for i = 1, 2 do
+							game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(UpgradeUnit))
+							warn("Upgrade")
+						end
+					end			
                 end
             else
                 warn("Error Sell or Summon or Upgrade")
