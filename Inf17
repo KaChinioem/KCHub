@@ -15,12 +15,12 @@ local function feedUntil95Percent()
 	
     local Sell = {
         [1] = "Sell",
-		[2] = workspace:FindFirstChild("Unti"):FindFirstChild("Narancia")
+		[2] = workspace.Unit:FindFirstChild("Narancia")
     }
 
 	local Upgrade = {
 		[1] = "Upgrade",
-		[2] = workspace:FindFirstChild("Unit"):FindFirstChild("Narancia")
+		[2] = workspace.Unit:FindFirstChild("Narancia")
 	}
 	
     while true do
