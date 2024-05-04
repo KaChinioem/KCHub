@@ -16,7 +16,8 @@ local function feedUntil95Percent()
     while true do
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
-
+			local percentStrWave = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
+			
             if percentStr then
                 if percentStr == '3X' then
                     for i = 1, 2 do
@@ -33,16 +34,14 @@ local function feedUntil95Percent()
                 warn("Error GameSpped")
             end
         end
-		
-        if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
-            local percentStrWave = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
-			
-			game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Summon))
+
+			if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
+				game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Summon))
+			end
 			
             if percentStrWave then
                 if percentStrWave == 'Wave 50' then
                     for i = 1, 2 do
-					if workspace.Unit:FindFirstChild("Narancia") then
 							local args = {
 								[1] = "Sell",
 								[2] =  workspace:WaitForChild("Unit"):WaitForChild("Narancia")
@@ -50,12 +49,10 @@ local function feedUntil95Percent()
 
 							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
 							warn("Sell Unit")
-						end
 					end
                     break
                 else
 					for i = 1, 2 do
-					if workspace.Unit:FindFirstChild("Narancia") then
 							local args = {
 								[1] = "Upgrade",
 								[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
@@ -63,13 +60,12 @@ local function feedUntil95Percent()
 
 							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(args))
 							warn("Upgrade")
-						end	
 					end		
                 end
             else
                 warn("Error Sell or Summon or Upgrade")
             end
-        end
+
 		
         wait(1)
     end
