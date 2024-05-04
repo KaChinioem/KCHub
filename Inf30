@@ -41,7 +41,14 @@ local function feedUntil95Percent()
 			}
 
 			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
-			warn("Sell Unit")		
+			warn("Sell Unit")
+		else
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
+			}
+
+			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(args))		
 		end
 		
 			if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
