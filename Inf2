@@ -1,4 +1,3 @@
-
 local function UnitInf()
     local GameSpped = {
         [1] = "SpeedChange",
@@ -29,6 +28,7 @@ local function UnitInf()
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
 
             if percentStr then
+
                 if percentStr == '3X' then
                     for i = 1, 2 do
 						warn("GameSpped 3X")
@@ -44,14 +44,14 @@ local function UnitInf()
                 warn("Error GameSpped")
             end
         end
-
+		
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave.Text
 
             if percentStr then
                 if percentStr == 'Wave 50' then
                     for i = 1, 2 do
-						game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Sell))
+						ggame:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Sell))
 						warn("Sell Unit")
                     end
                     break
@@ -61,7 +61,7 @@ local function UnitInf()
 						warn("Summon")
 					end					
                     for i = 1, 2 do
-                        game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Upgrade))
+                        game:GetService("ReplicatedStorage").Remotes.Input:InvokeServer(unpack(Upgrade))
 						warn("Upgrade")
 					end
                 end
@@ -69,19 +69,20 @@ local function UnitInf()
                 warn("Error Sell or Summon or Upgrade")
             end
         end
-
+		
         wait(1)
     end
 end
 
 local function checkfunction()
-    local FastForward = game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("FastForward")
+    local Fast = game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("FastForward")
 	
-    if FastForward then
+    if Fast then
         UnitInf()
     else
         wait(5)
         checkfunction()
     end
-	
 end
+
+checkfunction()
