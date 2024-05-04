@@ -12,7 +12,7 @@ local function feedUntil95Percent()
 			["Unit"] = "Narancia"
 		}
 	}
-
+		
     while true do
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
