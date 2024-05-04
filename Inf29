@@ -34,39 +34,20 @@ local function feedUntil95Percent()
                 warn("Error GameSpped")
             end
         end
+		if percentStrWave == 'Wave 50' then
+			local args = {
+				[1] = "Sell",
+				[2] =  workspace:WaitForChild("Unit"):WaitForChild("Narancia")
+			}
 
+			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
+			warn("Sell Unit")		
+		end
+		
 			if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Wave then
 				game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(Summon))
 			end
-			
-            if percentStrWave then
-                if percentStrWave == 'Wave 50' then
-                    for i = 1, 2 do
-							local args = {
-								[1] = "Sell",
-								[2] =  workspace:WaitForChild("Unit"):WaitForChild("Narancia")
-							}
 
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
-							warn("Sell Unit")
-					end
-                    break
-                else
-					for i = 1, 2 do
-							local args = {
-								[1] = "Upgrade",
-								[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
-							}
-
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(args))
-							warn("Upgrade")
-					end		
-                end
-            else
-                warn("Error Sell or Summon or Upgrade")
-            end
-
-		
         wait(1)
     end
 end
