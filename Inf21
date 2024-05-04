@@ -22,7 +22,14 @@ local function feedUntil95Percent()
 		[1] = "Upgrade",
 		[2] = workspace:WaitForChild("Unit"):WaitForChild("Narancia")
 	}	
-	
+
+	local args = {
+		[1] = "VoteGameMode",
+		[2] = "Extreme"
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(args))
+		
     while true do
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel then
             local percentStr = game:GetService("Players").LocalPlayer.PlayerGui.HUD.FastForward.TextLabel.Text
@@ -52,19 +59,15 @@ local function feedUntil95Percent()
             if percentStr then
                 if percentStr == 'Wave 50' then
                     for i = 1, 2 do
-
 						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Input"):FireServer(unpack(Sell))
 						warn("Sell Unit")
                     end
                     break
                 else
-					if workspace.Unit:FindFirstChild("Narancia") then
-						for i = 1, 2 do
-						
-							game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(Upgrade))
-							warn("Upgrade")
-						end
-					end			
+					for i = 1, 2 do
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):InvokeServer(unpack(Upgrade))
+						warn("Upgrade")
+					end		
                 end
             else
                 warn("Error Sell or Summon or Upgrade")
