@@ -14,12 +14,12 @@ local function feedUntil95Percent()
             if percentStr then
                 warn("Current percent:", percentStr)
 
-                if percentStr == '90%' then
+                if percentStr == '90%' or percentStr == '95%'then
                     for i = 1, 2 do
                         game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(useSoulRemote))
 						warn("Use Soul")
                     end
-                    break
+                    
                 else
                     for i = 1, 2 do
                         game:GetService("ReplicatedStorage").Remotes.Server:InvokeServer(unpack(feedRemote))
