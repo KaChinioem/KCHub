@@ -7,7 +7,7 @@ do
      end
 end
 
-wait(5)
+wait(10)
 
 local KFPS = Instance.new("ScreenGui")
 local Framefps = Instance.new("Frame")
