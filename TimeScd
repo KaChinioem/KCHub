@@ -74,7 +74,6 @@ EggStatus.TextXAlignment = Enum.TextXAlignment.Center
 spawn(function()
 	while wait() do
 		pcall(function()
-			game:GetService("CoreGui").TopBarApp.Enabled = false
 			game:GetService("Players").localPlayer.PlayerGui.Chat.Enabled = false
 			game:GetService("CoreGui").PlayerList.Enabled = false	
 			game:GetService("CoreGui").PlayerList.PlayerListMaster.Visible = false
