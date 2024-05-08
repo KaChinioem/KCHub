@@ -5,8 +5,6 @@ spawn(function()
 		end)
 	end
 end)
-local RunService = game:GetService("RunService")	
-RunService:Set3dRenderingEnabled(false)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AntiDisconnect"))()
 warn("Anti Disconnect")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AutoExtreme"))()
