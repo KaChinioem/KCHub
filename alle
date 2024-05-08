@@ -5,13 +5,10 @@ spawn(function()
 		end)
 	end
 end)
----loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/TimeScd"))()
-warn("Reload")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/reload"))()
-warn("JoinMap")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/eaterJoin"))()
-warn("FeedEgg")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/feed"))()
+---loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AntiDisconnect"))()
+warn("Anti Disconnect")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AutoExtreme"))()
+warn("Auto Extreme")
 
 
 
