@@ -2,6 +2,8 @@ spawn(function()
 	while wait() do
 		pcall(function()
 		  game:GetService("CoreGui").PlayerList.Enabled = false
+		local RunService = game:GetService("RunService")	
+		RunService:Set3dRenderingEnabled(false)
 		end)
 	end
 end)
