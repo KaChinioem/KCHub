@@ -11,3 +11,5 @@ repeat
         unpack(args))
     task.wait(1)
 until not game.Players.LocalPlayer.PlayerGui.HUD.ModeVoteFrame.Visible
+
+warn("Auto Extreme")
