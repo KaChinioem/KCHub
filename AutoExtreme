@@ -1,5 +1,7 @@
 repeat wait() until game:IsLoaded()
 
+warn("Auto Extreme")
+
 spawn(function()
 	while wait() do
 		pcall(function()
