@@ -1,20 +1,3 @@
-
-warn("Auto Extreme")
-
-repeat task.wait() until game:IsLoaded() and
-    not game.Players.LocalPlayer.PlayerGui:WaitForChild("LoadingScreen").Frame
-        .Visible
-
-repeat task.wait() until game.Players.LocalPlayer.PlayerGui.HUD
-            .ModeVoteFrame.Visible
-
-repeat
-    local args = {[1] = "VoteGameMode", [2] = "Extreme"}
-    game:GetService("ReplicatedStorage").Remotes.Input:FireServer(
-        unpack(args))
-    task.wait(1)
-until not game.Players.LocalPlayer.PlayerGui.HUD.ModeVoteFrame.Visible
-
 spawn(function()
 	while wait() do
 		pcall(function()
