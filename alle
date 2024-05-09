@@ -4,6 +4,8 @@ spawn(function()
 	while wait() do
 		pcall(function()
 		  game:GetService("CoreGui").PlayerList.Enabled = false
+		    local args = {[1] = "VoteGameMode", [2] = "Extreme"}
+		    game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
 		end)
 	end
 end)
