@@ -2,11 +2,10 @@
 
 simply put this script in autoexec and it will automatically rejoin games if your network disconnects or if you get kicked,ect
 ]]
+warn("Anti Disconnect")
 
 while true do
 repeat wait() until game.CoreGui:FindFirstChild('RobloxPromptGui')
-
-warn("Anti Disconnect")
 
 local lp,po,ts = game:GetService('Players').LocalPlayer,game.CoreGui.RobloxPromptGui.promptOverlay,game:GetService('TeleportService')
 
