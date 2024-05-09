@@ -1,13 +1,28 @@
-repeat wait() until game:IsLoaded()
+local function feedUntil95Percent()
+    local useVoteExtreme = {
+		[1] = "VoteGameMode", 
+		[2] = "Extreme"
+    }
 
-warn("Auto Extreme")
+    while true do
+		for i = 1, 2 do
+			game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(useVoteExtreme))
+			warn("useVoteExtreme")
+		end
+        wait(1)
+    end
+end
 
-spawn(function()
-	while wait() do
-		pcall(function()
-    local args = {[1] = "VoteGameMode", [2] = "Extreme"}
-    game:GetService("ReplicatedStorage").Remotes.Input:FireServer(
-        unpack(args))
-		end)
-	end
-end)
+local function checkfunction()
+    local shiki = game.Players.LocalPlayer.PlayerGui.HUD:FindFirstChild("ModeVoteFrame")
+	
+    if shiki then
+        feedUntil95Percent()
+    else
+        wait(5)
+        checkfunction()
+    end
+	
+end
+
+checkfunction()
