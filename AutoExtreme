@@ -1,3 +1,6 @@
+
+warn("Auto Extreme")
+
 repeat task.wait() until game:IsLoaded() and
     not game.Players.LocalPlayer.PlayerGui:WaitForChild("LoadingScreen").Frame
         .Visible
@@ -11,5 +14,3 @@ repeat
         unpack(args))
     task.wait(1)
 until not game.Players.LocalPlayer.PlayerGui.HUD.ModeVoteFrame.Visible
-
-warn("Auto Extreme")
