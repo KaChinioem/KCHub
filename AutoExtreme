@@ -21,7 +21,7 @@ local function checkfunction()
     if shiki then
         feedUntil95Percent()
     else
-        wait(5)
+        wait(2)
         checkfunction()
     end
 	
