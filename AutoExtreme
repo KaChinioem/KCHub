@@ -12,6 +12,8 @@ local function feedUntil95Percent()
 			local mess = true
 			if mess == true then
 				warn("useVoteExtreme")
+				wait(3)
+				mess = false
 			end
 		end
         wait(1)
