@@ -9,7 +9,10 @@ local function feedUntil95Percent()
     while true do
 		for i = 1, 2 do
 			game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(useVoteExtreme))
-			warn("useVoteExtreme")
+			local mess = true
+			if mess == true then
+				warn("useVoteExtreme")
+			end
 		end
         wait(1)
     end
