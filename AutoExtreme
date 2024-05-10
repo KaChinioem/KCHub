@@ -13,7 +13,15 @@ local function feedUntil95Percent()
 			if mess == true then
 				warn("useVoteExtreme")
 				wait(3)
+			     if game.Players.LocalPlayer.PlayerGui.HUD.ModeVoteFrame.Visible then
+			     	mess = true
+			     else
+				warn("mess = false")
 				mess = false
+				wait(0.5)
+				mess = false
+				wait(5)
+			     end
 			end
 		end
         wait(1)
