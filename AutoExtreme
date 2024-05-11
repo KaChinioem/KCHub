@@ -21,6 +21,7 @@ local function feedUntil95Percent()
 				wait(0.5)
 				mess = false
 				wait(5)
+				break
 			     end
 			end
 		end
