@@ -1,0 +1,13 @@
+local args = {
+    [1] = "Tatsumaki",
+    [2] = CFrame.new(-652.079833984375, -57.04720687866211, -400.6677551269531, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceTower"):FireServer(unpack(args))
+
+local args = {
+    [1] = "Tatsumaki",
+    [2] = CFrame.new(-652.079833984375, -57.04720687866211, -395.6677551269531, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceTower"):FireServer(unpack(args))
