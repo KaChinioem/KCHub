@@ -1,0 +1,27 @@
+repeat wait() until game:IsLoaded()
+
+local function feedUntil95Percent()
+    while true do
+		for i = 1, 2 do
+			game:GetService("CoreGui").TopBarApp.Enabled = false
+			game:GetService("Players").localPlayer.PlayerGui.Chat.Enabled = false
+			game:GetService("CoreGui").PlayerList.Enabled = false	
+			game:GetService("CoreGui").PlayerList.PlayerListMaster.Visible = false
+		end
+        wait(1)
+    end
+end
+
+local function checkfunction()
+    local shiki = game.Players.LocalPlayer.PlayerGui:FindFirstChild("PlayerListMaster")
+	
+    if shiki then
+        feedUntil95Percent()
+    else
+        wait(2)
+        checkfunction()
+    end
+	
+end
+
+checkfunction()	
