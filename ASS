@@ -21,4 +21,14 @@ local function checkfunction()
 	
 end
 
-checkfunction()	
+checkfunction()
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ASS"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)
