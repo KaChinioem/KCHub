@@ -28,6 +28,7 @@ end
     spawn(function()
         while wait() do
 			game:GetService("CoreGui").PlayerList.Enabled = false
+			if game.CreatorId == 12229756 and game:GetService("Players").LocalPlayer:FindFirstChild('SlimeCoins') then
 			    local tweenService = game:GetService("TweenService")
 			    
 			    ---local targetCFrame = CFrame.new(-71.0405655, 90000, -2258.77197, -1, 0, 0, 0, 1, 0, 0, 0, -1)
@@ -36,24 +37,8 @@ end
 			    
 			    local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(0), {CFrame = targetCFrame})
 			    
-			    tween:Play()		
-			local er = {}
-			local WaveNum = game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Top.Wave.Value.Layered.Text	
-			for _,v in ipairs(workspace.Enemies:GetChildren()) do
-				 if v:FindFirstChild('Boss') then
-					table.insert(er, v)
-					warn('Use Ability For'..v.Boss)
-					local args = {
-						[1] = workspace.Towers.SukunaGodly,
-						[2] = 1
-					}
-
-					game:GetService("ReplicatedStorage").Remotes.Ability:InvokeServer(unpack(args))
-				elseif not v:FindFirstChild('Boss') then
-					table.insert(er, v)
-					v.Parent = nil
-				end
-			end				
+			    tween:Play()
+			end
         end
     end)
 
