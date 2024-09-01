@@ -13,6 +13,23 @@ local function feedUntil95Percent()
 			    local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(0), {CFrame = targetCFrame})
 			    
 			    tween:Play()
+			local er = {}
+			local WaveNum = game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Top.Wave.Value.Layered.Text	
+			for _,v in ipairs(workspace.Enemies:GetChildren()) do
+				 if v:FindFirstChild('Boss') then
+					table.insert(er, v)
+					warn('Use Ability For'..v.Boss)
+					local args = {
+						[1] = workspace.Towers.SukunaGodly,
+						[2] = 1
+					}
+
+					game:GetService("ReplicatedStorage").Remotes.Ability:InvokeServer(unpack(args))
+				elseif not v:FindFirstChild('Boss') then
+					table.insert(er, v)
+					v.Parent = nil
+				end
+			end	
 		end
         wait(1)
     end
@@ -35,7 +52,7 @@ checkfunction()
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ASSS"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ASSSS"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 		
