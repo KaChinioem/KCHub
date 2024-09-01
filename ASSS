@@ -1,0 +1,43 @@
+repeat wait() until game:IsLoaded()
+
+local function feedUntil95Percent()
+    while true do
+		for i = 1, 2 do
+			game:GetService("CoreGui").PlayerList.Enabled = false
+			    local tweenService = game:GetService("TweenService")
+			    
+			    ---local targetCFrame = CFrame.new(-71.0405655, 90000, -2258.77197, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+			    local targetCFrame = CFrame.new(2647, 90000, -1989)
+			    local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+			    
+			    local tween = tweenService:Create(humanoidRootPart, TweenInfo.new(0), {CFrame = targetCFrame})
+			    
+			    tween:Play()
+		end
+        wait(1)
+    end
+end
+
+local function checkfunction()
+    local shiki = game:GetService("CoreGui"):FindFirstChild("PlayerList")
+	
+    if shiki then
+        feedUntil95Percent()
+    else
+        wait(1)
+        checkfunction()
+    end
+	
+end
+
+checkfunction()
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ASSS"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)
