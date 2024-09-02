@@ -1,0 +1,76 @@
+repeat wait() until game:IsLoaded()
+local RunService = game:GetService("RunService")
+RunService:Set3dRenderingEnabled(false)
+workspace.Enemies:Destroy()
+	spawn(function()
+        while wait() do
+			local args = {
+				[1] = {
+					["\t"] = {
+						[1] = {
+							[1] = "Vote_1",
+							[2] = true,
+							["n"] = 2
+						}}},[2] = {}}
+
+			game:GetService("ReplicatedStorage").ReliableRedEvent:FireServer(unpack(args))	
+			
+			if game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1"  then
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x1.5"
+			elseif game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1.5"  then	
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x2"			
+			end	
+			if game:GetService("Players").LocalPlayer.PlayerGui.EndGame.Enabled == true then
+				local args = {
+					[1] = "Replay"
+				}
+
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteEvents.Teleport:FireServer(unpack(args))
+			end
+			
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.83086395263672, -25.21451187133789, 35.61650085449219) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.61026763916016, -25.214513778686523, 33.00703430175781) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+			
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.61026763916016, -25.214513778686523, 30.00703430175781) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Kaneki
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))	
+			
+        end
+    end)	
+	
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+      warn("Loader Sc")
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AR"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)	
