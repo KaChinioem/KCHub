@@ -1,0 +1,35 @@
+repeat wait() until game:IsLoaded()
+
+	spawn(function()
+        while wait() do
+			local args = {
+				[1] = {
+					["\t"] = {
+						[1] = {
+							[1] = "Vote_1",
+							[2] = true,
+							["n"] = 2
+						}}},[2] = {}}
+
+			game:GetService("ReplicatedStorage").ReliableRedEvent:FireServer(unpack(args))	
+			
+			if game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1"  then
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x1.5"
+			elseif game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1.5"  then	
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x2"			
+			end	
+        end
+    end)	
+	
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ARRC"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+	end)	
+end)	
+
+
