@@ -9,13 +9,14 @@ spawn(function()
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Jotaro"))()
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Piccolo"))()
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Crocodile"))()
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/uppp"))()	
         end
     end)
 
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AllFarmARR"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AllFarmARRR"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 	end)	
