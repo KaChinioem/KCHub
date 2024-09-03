@@ -1,0 +1,222 @@
+repeat wait() until game:IsLoaded()
+
+	spawn(function()
+        while wait() do
+			local args = {
+				[1] = {
+					["\t"] = {
+						[1] = {
+							[1] = "Vote_1",
+							[2] = true,
+							["n"] = 2
+						}}},[2] = {}}
+
+			game:GetService("ReplicatedStorage").ReliableRedEvent:FireServer(unpack(args))	
+			
+			if game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1"  then
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x1.5"
+			elseif game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1.5"  then	
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
+				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x2"			
+			end	
+			if game:GetService("Players").LocalPlayer.PlayerGui.EndGame.Enabled == true then
+				local args = {
+					[1] = "Replay"
+				}
+
+				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteEvents.Teleport:FireServer(unpack(args))
+			end
+------ keneki			
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-76.2133560180664, -25.214515686035156, 33.0803337097168) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.42643737792969, -25.214513778686523, 26.510183334350586) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.81509399414062, -25.214515686035156, 30.25547218322754) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+------ nami
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-60.82135772705078, -25.214515686035156, 32.276344299316406) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-63.9132080078125, -25.214515686035156, 32.14664840698242) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-68.89350891113281, -25.214515686035156, 36.69389724731445) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-66.8140640258789, -25.214515686035156, 34.378780364990234) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+------ Frieza
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.09253692626953, -25.214698791503906, 20.18937110900879) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.45726013183594, -25.214702606201172, 30.95675277709961) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.12251281738281, -25.21470069885254, 23.816417694091797) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-82.8192138671875, -25.214702606201172, 27.29876708984375) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+------ Jotaro
+			local args = {
+				[1] = "73409",
+				[2] = CFrame.new(-87.74589538574219, -25.21468734741211, 25.67728042602539) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "73409",
+				[2] = CFrame.new(-91.3267822265625, -25.214677810668945, 29.39017105102539) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+------ Piccolo
+			local args = {
+				[1] = "5791",
+				[2] = CFrame.new(-91.33980560302734, -22.484832763671875, 22.876510620117188) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "5791",
+				[2] = CFrame.new(-93.87259674072266, -22.310237884521484, 24.999706268310547) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+------ Crocodile
+			local args = {
+				[1] = "47188",
+				[2] = CFrame.new(-87.89604187011719, -25.214691162109375, 31.499256134033203) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "47188",
+				[2] = CFrame.new(-91.21236419677734, -25.214679718017578, 32.77112579345703) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Nami
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Kaneki
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))	
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units:FindFirstChild("Frieza 1st Form")
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Crocodile
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Piccolo
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Jotaro
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+        end
+    end)	
+	
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ARR"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)	
+
+
