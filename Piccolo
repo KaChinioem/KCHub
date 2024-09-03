@@ -1,0 +1,22 @@
+
+	spawn(function()
+        while wait() do
+
+------ Piccolo
+			local args = {
+				[1] = "5791",
+				[2] = CFrame.new(-91.33980560302734, -22.484832763671875, 22.876510620117188) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "5791",
+				[2] = CFrame.new(-93.87259674072266, -22.310237884521484, 24.999706268310547) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+        end
+    end)	
