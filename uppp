@@ -1,0 +1,39 @@
+	spawn(function()
+        while wait() do
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Nami
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units:FindFirstChild("Frieza 1st Form")
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Crocodile
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Piccolo
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "Upgrade",
+				[2] = workspace.Units.Jotaro
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.InteractUnit:InvokeServer(unpack(args))			
+	
+        end
+    end)
