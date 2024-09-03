@@ -1,0 +1,38 @@
+
+	spawn(function()
+        while wait() do
+
+------ nami
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-60.82135772705078, -25.214515686035156, 32.276344299316406) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-63.9132080078125, -25.214515686035156, 32.14664840698242) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-68.89350891113281, -25.214515686035156, 36.69389724731445) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "16468",
+				[2] = CFrame.new(-66.8140640258789, -25.214515686035156, 34.378780364990234) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+        end
+    end)
