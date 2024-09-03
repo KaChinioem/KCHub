@@ -1,0 +1,38 @@
+
+	spawn(function()
+        while wait() do
+
+------ Frieza
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.09253692626953, -25.214698791503906, 20.18937110900879) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.45726013183594, -25.214702606201172, 30.95675277709961) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-83.12251281738281, -25.21470069885254, 23.816417694091797) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "45476",
+				[2] = CFrame.new(-82.8192138671875, -25.214702606201172, 27.29876708984375) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+        end
+    end)
