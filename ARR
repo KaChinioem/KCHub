@@ -51,7 +51,7 @@ spawn(function()
 	while wait() do
 		pcall(function()
 
-			Status.Text = game:GetService("Players").LocalPlayer.PlayerGui.EndGame.Main.TimeSpent.Text
+			Status.Text = game:GetService("ReplicatedStorage").Values.Rewards.Diamonds.Value
 	
 		end)
 	end
