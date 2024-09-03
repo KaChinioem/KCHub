@@ -1,0 +1,21 @@
+	spawn(function()
+        while wait() do
+------ Crocodile
+			local args = {
+				[1] = "47188",
+				[2] = CFrame.new(-87.89604187011719, -25.214691162109375, 31.499256134033203) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "47188",
+				[2] = CFrame.new(-91.21236419677734, -25.214679718017578, 32.77112579345703) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+			
+        end
+    end)	
