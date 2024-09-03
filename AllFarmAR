@@ -1,0 +1,21 @@
+repeat wait() until game:IsLoaded()
+
+	spawn(function()
+        while wait() do
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/keneki"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/nami"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Frieza"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Jotaro"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Piccolo"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Crocodile"))()
+        end
+    end)
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AllFarmAR"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+	end)	
+end)
