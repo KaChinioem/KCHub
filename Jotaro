@@ -1,0 +1,24 @@
+
+
+	spawn(function()
+        while wait() do
+
+------ Jotaro
+			local args = {
+				[1] = "73409",
+				[2] = CFrame.new(-87.74589538574219, -25.21468734741211, 25.67728042602539) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "73409",
+				[2] = CFrame.new(-91.3267822265625, -25.214677810668945, 29.39017105102539) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+        end
+    end)	
+	
