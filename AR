@@ -15,13 +15,7 @@ workspace.Enemies:Destroy()
 
 			game:GetService("ReplicatedStorage").ReliableRedEvent:FireServer(unpack(args))	
 			
-			if game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1"  then
-				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
-				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x1.5"
-			elseif game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text == "Speed x1.5"  then	
-				game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.ChangeGameSpeed:InvokeServer()
-				game:GetService("Players").LocalPlayer.PlayerGui.Info.Speed.Button.TextLabel.Text = "Speed x2"			
-			end	
+			game:GetService("ReplicatedStorage").Values.GameSpeed.Value = 2	
 			if game:GetService("Players").LocalPlayer.PlayerGui.EndGame.Enabled == true then
 				local args = {
 					[1] = "Replay"
