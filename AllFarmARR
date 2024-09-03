@@ -1,7 +1,8 @@
 repeat wait() until game:IsLoaded()
 
-	spawn(function()
+spawn(function()
         while wait() do
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ARRC"))()	
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/keneki"))()
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/nami"))()
           loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Frieza"))()
@@ -14,7 +15,7 @@ repeat wait() until game:IsLoaded()
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AllFarmAR"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/AllFarmARR"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 	end)	
