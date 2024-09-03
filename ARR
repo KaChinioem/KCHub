@@ -1,0 +1,68 @@
+repeat wait() until game.Players.LocalPlayer
+
+do
+    local ui = game.CoreGui:FindFirstChild("Time")
+    if ui then
+        ui:Destroy()
+     end
+end
+
+wait(10)
+
+local KFPS = Instance.new("ScreenGui")
+local Framefps = Instance.new("Frame")
+local UICorner213 = Instance.new("UICorner")
+local TextLabelfps = Instance.new("TextLabel")
+local Status = Instance.new("TextLabel")
+local EggStatus = Instance.new("TextLabel")
+local ImageLabelfps = Instance.new("ImageLabel")
+local OpenUI = Instance.new("TextButton")
+local Strokefps = Instance.new("UIStroke")
+
+KFPS.Name = "Time"
+KFPS.Parent = game.CoreGui
+KFPS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Framefps.Name = game.Players.LocalPlayer.DisplayName
+Framefps.Parent = KFPS
+Framefps.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Framefps.BorderSizePixel = 0
+--Framefps.BackgroundTransparency = 1.000
+Framefps.Position = UDim2.new(0.08, 0, 0, 0)
+Framefps.Size = UDim2.new(0, 200, 0, 155)
+
+UICorner213.Name = game.Players.LocalPlayer.DisplayName
+UICorner213.CornerRadius = UDim.new(0, 4)
+UICorner213.Parent = Framefps
+
+Status.Name = game.Players.LocalPlayer.DisplayName
+Status.Parent = Framefps
+Status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Status.BackgroundTransparency = 1.000
+Status.Position = UDim2.new(0.31, 0, 0.235, -27)
+Status.Size = UDim2.new(0, 75, 0, 15)
+Status.Font = Enum.Font.GothamSemibold
+Status.Text = "Status"
+Status.TextColor3 = Color3.fromRGB(255,255,255)
+Status.TextSize = 18.000
+Status.TextXAlignment = Enum.TextXAlignment.Center
+
+spawn(function()
+	while wait() do
+		pcall(function()
+
+			Status.Text = game:GetService("Players").LocalPlayer.PlayerGui.EndGame.Main.Title.TextLabel.Text
+	
+		end)
+	end
+end)
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ARR"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)	
