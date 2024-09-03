@@ -1,0 +1,30 @@
+	spawn(function()
+        while wait() do
+
+------ keneki			
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-76.2133560180664, -25.214515686035156, 33.0803337097168) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.42643737792969, -25.214513778686523, 26.510183334350586) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+			local args = {
+				[1] = "76188",
+				[2] = CFrame.new(-75.81509399414062, -25.214515686035156, 30.25547218322754) * CFrame.Angles(-0, 0, -0),
+				[3] = 0
+			}
+
+			game:GetService("ReplicatedStorage").EventsAndFunctions.RemoteFunctions.PlaceUnit:InvokeServer(unpack(args))
+
+        end
+    end)
