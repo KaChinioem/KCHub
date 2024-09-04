@@ -1,0 +1,17 @@
+repeat wait() until game:IsLoaded()
+
+	spawn(function()
+        while wait() do
+			local RunService = game:GetService("RunService")
+			RunService:Set3dRenderingEnabled(false)	
+        end
+    end)	
+	
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/REE"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+	end)	
+end)	
