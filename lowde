@@ -1,6 +1,6 @@
 repeat task.wait() until game:IsLoaded()
 if not game:IsLoaded() then game:IsLoaded():Wait(5) end
-
+warn("low")
 UserSettings():GetService("UserGameSettings").MasterVolume = 0
 local decalsyeeted = true
 local g = game
