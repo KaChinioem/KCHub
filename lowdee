@@ -1,6 +1,9 @@
+warn("low")
 repeat task.wait() until game:IsLoaded()
 if not game:IsLoaded() then game:IsLoaded():Wait(5) end
-warn("low")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
 UserSettings():GetService("UserGameSettings").MasterVolume = 0
 local decalsyeeted = true
 local g = game
@@ -74,12 +77,10 @@ w.DescendantAdded:Connect(function(v)
             end
         end)
 
-end
-
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/lowde"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/lowdee"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 		
