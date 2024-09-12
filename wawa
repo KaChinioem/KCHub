@@ -1,0 +1,166 @@
+if game.PlaceId == 16146832113 then
+    local function startLobby()
+        local args = {
+            [1] = "Enter",
+            [2] = workspace.MainLobby.Lobby.Lobby
+        }
+        game:GetService("ReplicatedStorage").Networking.LobbyEvent:FireServer(unpack(args))
+
+        wait(1)
+
+        local args = {
+            [1] = "Confirm",
+            [2] = {
+                [1] = "Story",
+                [2] = "Stage1",
+                [3] = "Act1",
+                [4] = "Normal",
+                [5] = 4,
+                [6] = 0,
+                [7] = true
+            }
+        }
+        game:GetService("ReplicatedStorage").Networking.LobbyEvent:FireServer(unpack(args))
+
+        wait(1)
+
+        local args = {
+            [1] = "Start"
+        }
+        game:GetService("ReplicatedStorage").Networking.LobbyEvent:FireServer(unpack(args))
+    end
+
+    while true do
+        startLobby()
+        wait(1)
+    end
+
+game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))
+
+
+elseif game.PlaceId == 16277809958 then
+    local function checkYenim()
+        local yenimText = game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Main.Yen.Text
+        local cleanedText = yenimText:gsub("¥", ""):gsub(",", "")
+        local yenimValue = tonumber(cleanedText)
+        
+        if yenimValue then
+            return yenimValue
+        else
+            return 0
+        end
+    end
+
+    local function placeGenos()
+
+	local args = {
+		[1] = "Render",
+		[2] = {
+			[1] = "Kinaru",
+			[2] = 13,
+			[3] = Vector3.new(134.26168823242188, 8.617912292480469, 119.02864074707031),
+			[4] = 0
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))
+	wait(0.5)
+	local args = {
+		[1] = "Render",
+		[2] = {
+			[1] = "Kinaru",
+			[2] = 13,
+			[3] = Vector3.new(147.63636779785156, 8.617912292480469, 122.94451141357422),
+			[4] = 0
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))
+	wait(0.5)
+	local args = {
+		[1] = "Render",
+		[2] = {
+			[1] = "Kinaru",
+			[2] = 13,
+			[3] = Vector3.new(151.41119384765625, 8.617912292480469, 122.69239044189453),
+			[4] = 0
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))
+	wait(0.5)
+	local args = {
+		[1] = "Render",
+		[2] = {
+			[1] = "Kinaru",
+			[2] = 13,
+			[3] = Vector3.new(155.4046173095703, 8.617914199829102, 122.87077331542969),
+			[4] = 0
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))		
+    end
+
+    local function autoUpgradeUnits()
+        local unitFolder = game:GetService("Workspace").Units
+
+        for _, unit in pairs(unitFolder:GetChildren()) do
+            local args = {
+                [1] = "Upgrade",
+                [2] = unit.Name
+            }
+            game:GetService("ReplicatedStorage").Networking.UnitEvent:FireServer(unpack(args))
+			warn(unit.Name)
+            wait(0.5)
+        end
+    end
+
+    local function skipWave()
+        local args = {
+            [1] = "Skip"
+        }
+        game:GetService("ReplicatedStorage").Networking.SkipWaveEvent:FireServer(unpack(args))
+    end
+
+    local function autoRetry()
+        while true do
+            local args = {
+                [1] = "Retry"
+            }
+            game:GetService("ReplicatedStorage").Networking.EndScreen.VoteEvent:FireServer(unpack(args))
+            wait(5)
+        end
+    end
+
+local function removeNotification()
+
+	local Notification = game:GetService("Players").LocalPlayer.PlayerGui.Notification
+	for _, Notification in pairs(Notification:GetChildren()) do
+		Notification:Destroy()
+	end
+	
+	for _, itemInCharacter in ipairs(workspace.Characters:GetChildren()) do
+		itemInCharacter.Torso.Tag:Destroy()
+	end
+
+	game:GetService("Players").LocalPlayer.PlayerGui.ViewFrames:Destroy()
+end
+
+    local function autoPlay()
+        while true do
+            local yenimValue = checkYenim()
+            if yenimValue >= 750 then
+                placeGenos()
+                autoUpgradeUnits()
+            end
+
+			removeNotification()
+            skipWave()
+            wait(2)
+        end
+    end
+	
+    spawn(autoRetry)
+    autoPlay()
+end
