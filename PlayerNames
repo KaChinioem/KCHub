@@ -1,0 +1,21 @@
+     spawn(function()
+        while wait() do
+			for _, v in ipairs(workspace:GetChildren()) do
+				if not v:IsA('Camera') then
+					local player = game.Players.LocalPlayer.Character
+					player.Head.PlayerBillboard.PlayerName.Text = "Lv. 9999 | Protect"
+					setclipboard(tostring())
+				end
+			end			 
+        end
+    end)
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/PlayerNames"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)
