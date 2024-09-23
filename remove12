@@ -11,14 +11,17 @@
 					warn(v.Decor)
 					v.Decor:Destroy()
 				end
-			end			
+			end	
+		for _, v in ipairs(workspace.Folder:GetChildren()) do
+			v:Destroy()
+		end
         end
     end)
 
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/remove1"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/remove12"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 		
