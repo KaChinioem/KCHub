@@ -4,14 +4,18 @@
 			 for _, unit in pairs(workspace.ClientEnemies:GetChildren()) do
 				warn(unit)
 				unit:Destroy()
-			 end			 
+			 end
+		for _, v in ipairs(workspace.Entities:GetChildren()) do
+			warn(v)
+			v:Destroy()
+		end
         end
     end)
 	
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ClientEnemiesssss"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/ClientEnemiesssssr"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 		
