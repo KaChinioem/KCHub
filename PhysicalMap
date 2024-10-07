@@ -1,0 +1,15 @@
+			 for _, unit in pairs(workspace.PhysicalMap.Build:GetChildren()) do
+				if unit:IsA('Model') then
+					warn(unit)
+					unit:Destroy()
+				end
+			 end
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/PhysicalMap"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+	end)	
+end)
