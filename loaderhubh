@@ -24,9 +24,10 @@ end
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/loaderhub"))()'
+			repeat task.wait() until Joebiden ~= nil;
+			warn("  Loaded nousigi Hub1\n")
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/loaderhubh"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
-		
 	end)	
 end)
