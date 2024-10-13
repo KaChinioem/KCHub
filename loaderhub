@@ -1,0 +1,32 @@
+if not game:IsLoaded() then
+	game.Loaded:Wait()
+end
+
+task.wait( math.random() )
+
+local games = {
+	[34121350] = 'https://nousigi.com/loader.lua', -- AD
+}
+
+if games[game.CreatorId] then
+	task.wait( math.random() )
+	if game.CreatorId == 34121350 then
+		warn("======================\n")
+		warn("  Loaded nousigi Hub\n")
+		warn("======================\n")	
+		repeat
+			loadstring(game:HttpGet(games[game.CreatorId]))()
+			task.wait(10)
+		until Joebiden
+	end
+end
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/loaderhub"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)
