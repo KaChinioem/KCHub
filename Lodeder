@@ -24,8 +24,10 @@ end
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lodeder"))()'
-			queue_on_teleport(BeteHubSCRIPT)
+		    if not Joebiden then
+			local SCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lodeder"))()'
+			queue_on_teleport(SCRIPT)
+			end
 		end
 		
 	end)	
