@@ -11,6 +11,8 @@ local games = {
 if games[game.CreatorId] then
 	task.wait( math.random() )
 	if game.CreatorId == 34121350 then
+		warn("not Loaded Hub")
+		if not game:GetService("CoreGui"):FindFirstChild("Nousigi Hub Btn") then
 			warn("======")
 			warn("Loaded Hub")
 			warn("======")
@@ -18,17 +20,16 @@ if games[game.CreatorId] then
 				loadstring(game:HttpGet(games[game.CreatorId]))()
 				task.wait(10)
 			until Joebiden
+		end
 	end
 end
 
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-		    if not Joebiden then
 			warn("Loaded 2")	
 			local SCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lodeder"))()'
 			queue_on_teleport(SCRIPT)
-			end
 		end
 		
 	end)	
