@@ -18,7 +18,7 @@ if games[game.CreatorId] then
 			repeat task.wait() 
 				loadstring(game:HttpGet(games[game.CreatorId]))()
 				task.wait(20)
-			until getgenv().Key ~= nil;
+			until Joebiden
 		end
 	end
 end
@@ -27,9 +27,8 @@ task.spawn(function()
 	pcall(function()
 		if queue_on_teleport then
 			warn("Loaded 2")	
-			local SCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lodeder"))()'
+			local SCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Lodederr"))()'
 			queue_on_teleport(SCRIPT)
-			task.wait(20)
 		end
 		
 	end)	
