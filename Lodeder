@@ -15,10 +15,10 @@ if games[game.CreatorId] then
 			warn("======")
 			warn("Loaded Hub")
 			warn("======")
-			repeat
+			repeat task.wait() 
 				loadstring(game:HttpGet(games[game.CreatorId]))()
 				task.wait(20)
-			until Joebiden
+			until getgenv().Key ~= nil;
 		end
 	end
 end
