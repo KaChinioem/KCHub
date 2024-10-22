@@ -18,7 +18,7 @@ if games[game.CreatorId] then
 			warn("======")
 			repeat
 				loadstring(game:HttpGet(games[game.CreatorId]))()
-				task.wait(10)
+				task.wait(20)
 			until Joebiden
 		end
 	end
