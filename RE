@@ -1,0 +1,28 @@
+repeat wait() until game.Players
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = game:GetService("Players").LocalPlayer
+local playerGui = player.PlayerGui
+local unitFolder = game:GetService("Workspace").Units
+
+	spawn(function()
+        while wait() do
+			ReplicatedStorage.Remote.SpawnUnit:InvokeServer("Evil Kai",CFrame.new(-223,479,-30),1,{"1","1","1","1"})	
+			for _, unit in pairs(unitFolder:GetChildren()) do
+				if unit.Name == "Evil Kai" then
+					ReplicatedStorage.Remote.UpgradeUnit:InvokeServer(workspace.Units["Evil Kai"])	
+				end
+			end
+			ReplicatedStorage.Remote.SkipEvent:FireServer()	
+        end
+    end)
+
+task.spawn(function() 
+	pcall(function()
+		if queue_on_teleport then
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/RE"))()'
+			queue_on_teleport(BeteHubSCRIPT)
+		end
+		
+	end)	
+end)
