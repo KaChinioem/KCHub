@@ -1,16 +1,17 @@
      spawn(function()
         while wait() do
-			for _, v in ipairs(workspace.Entities:GetChildren()) do
+			for _, v in ipairs(workspace.Enemies:GetChildren()) do
 				warn(v)
 				v:Destroy()
 			end
         end
     end)
+
 	
 task.spawn(function() 
 	pcall(function()
 		if queue_on_teleport then
-			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Entitiesremove"))()'
+			local BeteHubSCRIPT = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/KaChinioem/KCHub/main/Enemiesremove"))()'
 			queue_on_teleport(BeteHubSCRIPT)
 		end
 		
