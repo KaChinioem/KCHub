@@ -6,11 +6,12 @@ task.wait( math.random() )
 
 local games = {
 	[34121350] = 'https://nousigi.com/loader.lua', -- AD
+	[33820338] = 'https://nousigi.com/loader.lua', -- AR
 }
 
 if games[game.CreatorId] then
 	task.wait( math.random() )
-	if game.CreatorId == 34121350 then
+	if game.CreatorId == 34121350 or game.CreatorId == 33820338 then
 			warn("======")
 			warn("Loaded Hub")
 			warn("======")
