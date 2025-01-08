@@ -1,7 +1,7 @@
 local portalworlds = {
   portal_item__7ds =  'Fabled Kingdom (Cube)',
   eclipse_portal_item = 'The Eclipse',
-  portal_item__dazai = "'Sky Club',
+  portal_item__dazai = 'Sky Club',
   portal_item__eclipse = "The Eclipse",
   portal_item__fate = "Noble Portal",
   portal_item__pain = 'Rain Village',
