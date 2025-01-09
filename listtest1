@@ -1,8 +1,11 @@
 local whitelist = {
     '3920937434'
 }
+
 local url = string.split(game.Players.LocalPlayer.CharacterAppearance, "=")
 local userid = tonumber(url[#url])
 if table.find(whitelist, userid) then
-    print(whitelist)
+    return true
+else
+    return false
 end
