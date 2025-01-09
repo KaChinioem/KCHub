@@ -1030,20 +1030,6 @@
                 DropdownContent.ClipsDescendants = true
                 DropdownContent.Parent = Dropdown
 
-				local TemplateTextButton = Objects.new("TextBox")
-				TemplateTextButton.Parent = DropdownContent
-				TemplateTextButton.BackgroundColor3 = Color3.fromRGB(44, 44, 63)
-				TemplateTextButton.BorderSizePixel = 0
-				TemplateTextButton.Size = UDim2.new(1, 0, 0.08, 0)
-				TemplateTextButton.ZIndex = 556
-				TemplateTextButton.RichText = true
-				TemplateTextButton.Font = Enum.Font.GothamBlack
-				TemplateTextButton.TextScaled = true
-				TemplateTextButton.TextStrokeTransparency = 0.65
-				TemplateTextButton.TextColor3 = Color3.fromRGB(255,255,255)
-				TemplateTextButton.Text = ""
-				TemplateTextButton.PlaceholderText = "Select"
-
                 local NumberOfOptions = #DropdownOptions
                 local DropToggle = false
                 local DropdownSize = UDim2.fromScale(1,0) + UDim2.fromOffset(0,(NumberOfOptions*20) + ((NumberOfOptions - 1) * 5))
@@ -1103,7 +1089,7 @@
                     TweenService:Create(Dropdown, TweenInfo.new(0.15), {Size = DropToggle and (DropdownSize + UDim2.fromOffset(0, 30)) or (UDim2.fromScale(1,0) + UDim2.fromOffset(0, 25))}):Play()
 
                     DropdownContent = Objects.new("Frame")
-                    DropdownContent.Name = "Content"
+                    DropdownContent.Name = "Content 1"
                     DropdownContent.Size = DropToggle and DropdownSize or UDim2.fromScale(1,0)
                     DropdownContent.Position = UDim2.fromOffset(0,30)
                     DropdownContent.ClipsDescendants = true
