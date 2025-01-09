@@ -1024,11 +1024,24 @@
                 TweenService:Create(DropdownButton, TweenInfo.new(0.5), {ImageTransparency = 0}):Play()
 
                 local DropdownContent = Objects.new("Frame")
-                DropdownContent.Name = "Content"
+                DropdownContent.Name = "DDD"
                 DropdownContent.Size = UDim2.fromScale(1,0)
                 DropdownContent.Position = UDim2.fromOffset(0,30)
                 DropdownContent.ClipsDescendants = true
                 DropdownContent.Parent = Dropdown
+
+                --[[local TextInput = Objects.new("Box")
+                TextInput.Name = "Value"
+                TextInput.PlaceholderText = TextFieldText
+                TextInput.PlaceholderColor3 = Theme.TextFieldAccent
+                TextInput.TextInputType = Enum.TextInputType[TextFieldInputType]
+                TextInput.TextColor3 = Theme.TextFieldAccent
+                TextInput.Text = ""
+                TextInput.Font = Enum.Font.GothamSemibold
+                TextInput.TextSize = 14
+                TextInput.TextTransparency = 1
+                TextInput.Parent = DropdownContent]]
+
 
                 local NumberOfOptions = #DropdownOptions
                 local DropToggle = false
