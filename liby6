@@ -1033,7 +1033,7 @@
                 local TextInput = Objects.new("Box")
                 TextInput.Name = "Value"
                 TextInput.TextColor3 = Theme.TextFieldAccent
-                TextInput.Text = ""
+                TextInput.Text = DropdownCallback
                 TextInput.Font = Enum.Font.GothamSemibold
                 TextInput.TextSize = 14
                 TextInput.TextTransparency = 1
