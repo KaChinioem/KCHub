@@ -1032,9 +1032,6 @@
 
                 local TextInput = Objects.new("Box")
                 TextInput.Name = "Value"
-                TextInput.PlaceholderText = TextFieldText
-                TextInput.PlaceholderColor3 = Theme.TextFieldAccent
-                TextInput.TextInputType = Enum.TextInputType[TextFieldInputType]
                 TextInput.TextColor3 = Theme.TextFieldAccent
                 TextInput.Text = ""
                 TextInput.Font = Enum.Font.GothamSemibold
