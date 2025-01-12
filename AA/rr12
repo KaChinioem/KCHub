@@ -143,12 +143,6 @@ do
 			end
 		end
 
-		local function Callback()
-			if ButtonFunctions.Settings.Callback then
-				ButtonFunctions.Settings.Callback()
-			end
-		end
-
 		buttonInteract.MouseEnter:Connect(function()
 			ChangeState("Hover")
 		end)
@@ -156,7 +150,7 @@ do
 			ChangeState("Idle")
 		end)
 
-		buttonInteract.MouseButton1Click:Connect(Callback)
+		--buttonInteract.MouseButton1Click:Connect(Callback)
 		function ButtonFunctions:UpdateName(Name)
 			buttonInteract.Text = tostring(Name)
 		end
