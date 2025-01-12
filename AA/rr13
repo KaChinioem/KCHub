@@ -143,6 +143,12 @@ do
 			end
 		end
 
+		local function Callback()
+			if Settings.Callback then
+				task.spawn(Settings.Callback)
+			end
+		end
+
 		buttonInteract.MouseEnter:Connect(function()
 			ChangeState("Hover")
 		end)
@@ -150,7 +156,7 @@ do
 			ChangeState("Idle")
 		end)
 
-		--buttonInteract.MouseButton1Click:Connect(Callback)
+		buttonInteract.MouseButton1Click:Connect(Callback)
 		function ButtonFunctions:UpdateName(Name)
 			buttonInteract.Text = tostring(Name)
 		end
@@ -4449,7 +4455,7 @@ function MacLib:Window(Settings)
 
 			task.spawn(function()
 				if Settings.Callback then
-					task.spawn(Settings.Callback, toggled)			
+					Settings.Callback(toggled)
 				end
 			end)
 		end)
@@ -4612,6 +4618,15 @@ function MacLib:Window(Settings)
 
 			notificationControls.Parent = notification
 
+			local tweens = {
+				In = Tween(notificationUIScale, TweenInfo.new(0.2, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+					Scale = Settings.Scale or 1
+				}),
+				Out = Tween(notificationUIScale, TweenInfo.new(0.2, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+					Scale = 0
+				}),
+			}
+
 			local styles = {
 				None = function() interactable:Destroy() end,
 				Confirm = function() interactable.Text = "✓" end,
@@ -4631,13 +4646,16 @@ function MacLib:Window(Settings)
 			end
 
 			local AnimateNotification = task.spawn(function()
-
+				tweens.In:Play()
 				notificationUIScale.Scale = 1
 
 				Settings.Lifetime = Settings.Lifetime or 3
 
 				if Settings.Lifetime ~= 0 then
 					task.wait(Settings.Lifetime)
+					local out = tweens.Out
+					out:Play()
+					out.Completed:Wait()
 					notification:Destroy()
 				end
 			end)
@@ -4650,8 +4668,17 @@ function MacLib:Window(Settings)
 				notificationDescription.Text = tostring(New)
 			end
 
+			function NotificationFunctions:Resize(X)
+				local targ = X or 250
+				notification.Size = UDim2.fromOffset(targ, 0)
+			end
+
 			function NotificationFunctions:Cancel()
 				task.cancel(AnimateNotification)
+
+				local out = tweens.Out
+				out:Play()
+				out.Completed:Wait()
 				notification:Destroy()
 			end
 
@@ -5045,7 +5072,7 @@ function MacLib:Window(Settings)
 			label.Size = UDim2.new(0.882, 0, 0.823, 0)
 			label.TextColor3 = Color3.fromRGB(214, 159, 64)
 			label.BackgroundTransparency = 1
-			label.Text = 'Buang Hub'
+			label.Text = 'Demonique Hub'
 			label.TextScaled = true
 			label.ZIndex = 9999
 
