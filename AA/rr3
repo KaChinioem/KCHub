@@ -31,6 +31,23 @@ local tabs = {}
 local currentTabInstance = nil
 local tabIndex = 0
 
+local assets = {
+	interFont = "rbxassetid://12187365364",
+	userInfoBlurred = "rbxassetid://18824089198",
+	toggleBackground = "rbxassetid://18772190202",
+	togglerHead = "rbxassetid://18772309008",
+	buttonImage = "rbxassetid://10709791437",
+	searchIcon = "rbxassetid://86737463322606",
+	colorWheel = "rbxassetid://2849458409",
+	colorTarget = "rbxassetid://73265255323268",
+	grid = "rbxassetid://121484455191370",
+	globe = "rbxassetid://108952102602834",
+	transform = "rbxassetid://90336395745819",
+	dropdown = "rbxassetid://18865373378",
+	sliderbar = "rbxassetid://18772615246",
+	sliderhead = "rbxassetid://18772834246",
+}
+
 --// Functions
 
 function Defaults(Default, Settings)
