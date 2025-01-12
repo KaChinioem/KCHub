@@ -3977,7 +3977,7 @@ function MacLib:Window(Settings)
 	local defaultSidebarWidth = sidebar.AbsoluteSize.X
 	local initialMouseX, initialSidebarWidth
 	local snapRange = 20
-	local minSidebarWidth = 300
+	local minSidebarWidth = 107
 	local maxSidebarWidth = base.AbsoluteSize.X - minSidebarWidth
 
 	local TweenSettings = {
@@ -4024,7 +4024,7 @@ function MacLib:Window(Settings)
 			end
 
 			sidebar.Size = UDim2.new(0, newSidebarWidth, 1, 0)
-			content.Size = UDim2.new(0, base.AbsoluteSize.X - newSidebarWidth, 1, 0)
+			--content.Size = UDim2.new(0, base.AbsoluteSize.X - newSidebarWidth, 1, 0)
 		end
 	end)
 
