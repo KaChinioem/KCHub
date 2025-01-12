@@ -5130,12 +5130,7 @@ function MacLib:Window(Settings)
 
 	local createUIButton = function()
 		if uiButton == nil then
-		do
-			if mainGui then
-				mainGui:Destroy()
-			end
-		end
-			local mainGui = Instance.new('ScreenGui', game:GetService('CoreGui'));
+			local mainGui = Instance.new('ScreenGui', macLib);
 			uiButton = mainGui;
 
 			local button = Instance.new('TextButton', mainGui);
