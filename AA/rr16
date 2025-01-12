@@ -5004,7 +5004,20 @@ function MacLib:Window(Settings)
 		acrylicBlur = State
 	end
 
+	function WindowFunctions:Unload()
+		if onUnloadCallback then
+			onUnloadCallback()  
+		end
+		macLib:Destroy()
+		unloaded = true
+	end
+
+	function WindowFunctions.onUnloaded(callback)
+		onUnloadCallback = callback
+	end
+	
 	local MenuKeybind = Settings.Keybind or Enum.KeyCode.RightControl
+	
 	local function ToggleMenu()
 		local state = not WindowFunctions:GetState()
 		WindowFunctions:SetState(state)
@@ -5020,7 +5033,25 @@ function MacLib:Window(Settings)
 			ToggleMenu()
 		end
 	end)
+	
 	minimize.MouseButton1Click:Connect(ToggleMenu)
+	exit.MouseButton1Click:Connect(function()
+		WindowFunctions:Dialog({
+			Title = Settings.Title,
+			Description = "Are you sure you want to exit the menu? You will lose any unsaved configurations.",
+			Buttons = {
+				{
+					Name = "Confirm",
+					Callback = function()
+						WindowFunctions:Unload()
+					end,
+				},
+				{
+					Name = "Cancel"
+				}
+			}
+		})
+	end)
 
 	function WindowFunctions:GetState()
 		return windowState
