@@ -3399,7 +3399,7 @@ function MacLib:Window(Settings)
 	end
 
 	local macLib = Instance.new("ScreenGui")
-	macLib.Name = "MacLib"
+	macLib.Name = "Demonique"
 	macLib.DisplayOrder = 100
 	macLib.IgnoreGuiInset = true
 	macLib.ScreenInsets = Enum.ScreenInsets.None
