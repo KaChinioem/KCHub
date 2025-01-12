@@ -144,8 +144,8 @@ do
 		end
 
 		local function Callback()
-			if Settings.Callback then
-				task.spawn(Settings.Callback)
+			if ButtonFunctions.Settings.Callback then
+				ButtonFunctions.Settings.Callback()
 			end
 		end
 
