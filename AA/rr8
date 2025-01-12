@@ -11,6 +11,7 @@ local StarterPlayer		= game:GetService("StarterPlayer")
 local Mouse					= Player:GetMouse()
 local VirtualUser				= game:GetService("VirtualUser")
 local Lighting = game:GetService("Lighting")
+local TweenService = game:GetService("TweenService")
 local ContentProvider = game:GetService("ContentProvider")
 
 Player.Idled:Connect(function()
