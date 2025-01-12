@@ -3619,6 +3619,19 @@ function MacLib:Window(Settings)
 
 	controls.Parent = windowControls
 
+	local divider1 = Instance.new("Frame")
+	divider1.Name = "Divider"
+	divider1.AnchorPoint = Vector2.new(0, 1)
+	divider1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	divider1.BackgroundTransparency = 0.9
+	divider1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	divider1.BorderSizePixel = 0
+	divider1.Position = UDim2.fromScale(0, 1)
+	divider1.Size = UDim2.new(1, 0, 0, 1)
+	divider1.Parent = windowControls
+
+	windowControls.Parent = sidebar
+	
 	local information = Instance.new("Frame")
 	information.Name = "Information"
 	information.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
