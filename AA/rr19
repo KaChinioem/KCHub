@@ -3971,7 +3971,7 @@ function MacLib:Window(Settings)
 	content.Position = UDim2.fromScale(1, 4.69e-08)
 	content.Size = UDim2.fromScale(0.675, 1)
 
-	--MacLib.content = content
+	MacLib.content = content
 
 	local resizingContent = false
 	local defaultSidebarWidth = sidebar.AbsoluteSize.X
