@@ -10,6 +10,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StarterPlayer		= game:GetService("StarterPlayer")
 local Mouse					= Player:GetMouse()
 local VirtualUser				= game:GetService("VirtualUser")
+local Lighting = game.GetService("Lighting")
+local ContentProvider = game.GetService("ContentProvider")
 
 Player.Idled:Connect(function()
 	VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
