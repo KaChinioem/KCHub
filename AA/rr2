@@ -4087,8 +4087,9 @@ function MacLib:Window(Settings)
 
 		local settingName = Instance.new("TextLabel")
 		settingName.Name = "SettingName"
-		settingName.FontFace = Font.new("rbxassetid://12187365364",Enum.FontWeight.Medium,Enum.FontStyle.Normal)
-		settingName.Text = tostring(Settings.Name)
+		settingName.FontFace = Font.new(assets.interFont)
+		settingName.Text = Settings.Name
+		settingName.RichText = true
 		settingName.TextColor3 = Color3.fromRGB(255, 255, 255)
 		settingName.TextSize = 13
 		settingName.TextTransparency = 0.5
@@ -4115,7 +4116,11 @@ function MacLib:Window(Settings)
 
 		local checkmark = Instance.new("TextLabel")
 		checkmark.Name = "Checkmark"
-		checkmark.FontFace = Font.new("rbxassetid://12187365364",Enum.FontWeight.Medium,Enum.FontStyle.Normal)
+		checkmark.FontFace = Font.new(
+			assets.interFont,
+			Enum.FontWeight.Medium,
+			Enum.FontStyle.Normal
+		)
 		checkmark.Text = "✓"
 		checkmark.TextColor3 = Color3.fromRGB(255, 255, 255)
 		checkmark.TextSize = 13
@@ -4145,18 +4150,33 @@ function MacLib:Window(Settings)
 			waitTime = 1
 		}
 
+		local tweens = {
+			checkIn = Tween(checkmark, TweenInfo.new(tweensettings.duration, tweensettings.easingStyle), {
+				Size = UDim2.new(checkmark.Size.X.Scale, tweensettings.checkSizeIncrease, checkmark.Size.Y.Scale, checkmark.Size.Y.Offset)
+			}),
+			checkOut = Tween(checkmark, TweenInfo.new(tweensettings.duration, tweensettings.easingStyle),{
+				Size = UDim2.new(checkmark.Size.X.Scale, tweensettings.checkSizeDecrease, checkmark.Size.Y.Scale, checkmark.Size.Y.Offset)
+			}),
+			nameIn = Tween(settingName, TweenInfo.new(tweensettings.duration, tweensettings.easingStyle),{
+				TextTransparency = tweensettings.transparencyIn
+			}),
+			nameOut = Tween(settingName, TweenInfo.new(tweensettings.duration, tweensettings.easingStyle),{
+				TextTransparency = tweensettings.transparencyOut
+			})
+		}
+
 		local function Toggle(State)
 			if not State then
-				checkmark.Size = UDim2.new(checkmark.Size.X.Scale, -globalSettingToggleUIListLayout.Padding.Offset, checkmark.Size.Y.Scale, checkmark.Size.Y.Offset)
-				settingName.TextTransparency = 0.5
+				tweens.checkOut:Play()
+				tweens.nameOut:Play()
 				checkmark:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
 					if checkmark.AbsoluteSize.X <= 0 then
 						checkmark.TextTransparency = 1
 					end
 				end)
 			else
-				checkmark.Size = UDim2.new(checkmark.Size.X.Scale, 12, checkmark.Size.Y.Scale, checkmark.Size.Y.Offset)
-				settingName.TextTransparency = 0.2
+				tweens.checkIn:Play()
+				tweens.nameIn:Play()
 				checkmark:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
 					if checkmark.AbsoluteSize.X > 0 then
 						checkmark.TextTransparency = 0
@@ -4172,21 +4192,20 @@ function MacLib:Window(Settings)
 			toggled = not toggled
 			Toggle(toggled)
 
-			if Settings.Callback then
-				task.spawn(Settings.Callback)
-			end
+			task.spawn(function()
+				if Settings.Callback then
+					Settings.Callback(toggled)
+				end
+			end)
 		end)
 
 		function GlobalSettingFunctions:UpdateName(NewName)
-			settingName.Text = tostring(NewName)
+			settingName.Text = NewName
 		end
 
 		function GlobalSettingFunctions:UpdateState(NewState)
 			Toggle(NewState)
 			toggled = NewState
-			if Settings.Callback then
-				task.spawn(Settings.Callback)
-			end
 		end
 
 		return GlobalSettingFunctions
