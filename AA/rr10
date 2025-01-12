@@ -4455,7 +4455,7 @@ function MacLib:Window(Settings)
 
 			task.spawn(function()
 				if Settings.Callback then
-					Settings.Callback(toggled)
+					task.spawn(Settings.Callback, toggled)			
 				end
 			end)
 		end)
