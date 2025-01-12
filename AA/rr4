@@ -4873,22 +4873,36 @@ end
 
 function MacLib:Demo()
 	local Window = MacLib:Window({
-		Title = "MacLib Demo",
+		Title = "Maclib Demo",
 		Subtitle = "This is a subtitle.",
 		Size = UDim2.fromOffset(868, 650),
+		DragStyle = 1,
+		DisabledWindowControls = {},
 		ShowUserInfo = true,
 		Keybind = Enum.KeyCode.RightControl,
-		AcrylicBlur = true
+		AcrylicBlur = true,
 	})
 
 	local globalSettings = {
+		UIBlurToggle = Window:GlobalSetting({
+			Name = "UI Blur",
+			Default = Window:GetAcrylicBlurState(),
+			Callback = function(bool)
+				Window:SetAcrylicBlurState(bool)
+				Window:Notify({
+					Title = Window.Settings.Title,
+					Description = (bool and "Enabled" or "Disabled") .. " UI Blur",
+					Lifetime = 5
+				})
+			end,
+		}),
 		NotificationToggler = Window:GlobalSetting({
 			Name = "Notifications",
 			Default = Window:GetNotificationsState(),
 			Callback = function(bool)
 				Window:SetNotificationsState(bool)
 				Window:Notify({
-					Title = "MacLib Demo",
+					Title = Window.Settings.Title,
 					Description = (bool and "Enabled" or "Disabled") .. " Notifications",
 					Lifetime = 5
 				})
@@ -4900,7 +4914,7 @@ function MacLib:Demo()
 			Callback = function(bool)
 				Window:SetUserInfoState(bool)
 				Window:Notify({
-					Title = "MacLib Demo",
+					Title = Window.Settings.Title,
 					Description = (bool and "Showing" or "Redacted") .. " User Info",
 					Lifetime = 5
 				})
@@ -4913,11 +4927,12 @@ function MacLib:Demo()
 	}
 
 	local tabs = {
-		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "rbxassetid://18821914323" })
+		Main = tabGroups.TabGroup1:Tab({ Name = "Demo", Image = "rbxassetid://18821914323" }),
+		Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "rbxassetid://10734950309" })
 	}
 
 	local sections = {
-		MainSection1 = tabs.Main:Section({ Side = "Left" })
+		MainSection1 = tabs.Main:Section({ Side = "Left" }),
 	}
 
 	sections.MainSection1:Header({
@@ -4928,7 +4943,7 @@ function MacLib:Demo()
 		Name = "Button",
 		Callback = function()
 			Window:Dialog({
-				Title = "MacLib Demo",
+				Title = Window.Settings.Title,
 				Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Eros vestibulum aliquet mattis, ex platea nunc.",
 				Buttons = {
 					{
@@ -4951,11 +4966,14 @@ function MacLib:Demo()
 		AcceptedCharacters = "All",
 		Callback = function(input)
 			Window:Notify({
-				Title = "MacLib Demo",
+				Title = Window.Settings.Title,
 				Description = "Successfully set input to " .. input
 			})
-		end
-	})
+		end,
+		onChanged = function(input)
+			print("Input is now " .. input)
+		end,
+	}, "Input")
 
 	sections.MainSection1:Slider({
 		Name = "Slider",
@@ -4963,32 +4981,41 @@ function MacLib:Demo()
 		Minimum = 0,
 		Maximum = 100,
 		DisplayMethod = "Percent",
+		Precision = 0,
 		Callback = function(Value)
 			print("Changed to ".. Value)
-		end,
-	})
+		end
+	}, "Slider")
 
 	sections.MainSection1:Toggle({
 		Name = "Toggle",
 		Default = false,
 		Callback = function(value)
 			Window:Notify({
-				Title = "MacLib Demo",
+				Title = Window.Settings.Title,
 				Description = (value and "Enabled " or "Disabled ") .. "Toggle"
 			})
 		end,
-	})
+	}, "Toggle")
 
 	sections.MainSection1:Keybind({
 		Name = "Keybind",
+		Blacklist = false,
 		Callback = function(binded)
 			Window:Notify({
 				Title = "Demo Window",
 				Description = "Pressed keybind - "..tostring(binded.Name),
 				Lifetime = 3
 			})
-		end
-	})
+		end,
+		onBinded = function(bind)
+			Window:Notify({
+				Title = "Demo Window",
+				Description = "Successfully Binded Keybind to - "..tostring(bind.Name),
+				Lifetime = 3
+			})
+		end,
+	}, "Keybind")
 
 	sections.MainSection1:Colorpicker({
 		Name = "Colorpicker",
@@ -4996,7 +5023,7 @@ function MacLib:Demo()
 		Callback = function(color)
 			print("Color: ", color)
 		end,
-	})
+	}, "Colorpicker")
 
 	local alphaColorPicker = sections.MainSection1:Colorpicker({
 		Name = "Transparency Colorpicker",
@@ -5005,7 +5032,7 @@ function MacLib:Demo()
 		Callback = function(color, alpha)
 			print("Color: ", color, " Alpha: ", alpha)
 		end,
-	})
+	}, "TransparencyColorpicker")
 
 	local rainbowActive
 	local rainbowConnection
@@ -5016,27 +5043,31 @@ function MacLib:Demo()
 		Default = false,
 		Callback = function(value)
 			rainbowActive = value
+
 			if rainbowActive then
 				rainbowConnection = game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
 					hue = (hue + deltaTime * 0.1) % 1
-					local newColor = Color3.fromHSV(hue, 1, 1)
-					alphaColorPicker:SetColor(newColor)
+					alphaColorPicker:SetColor(Color3.fromHSV(hue, 1, 1))
 				end)
-			else
-				if rainbowConnection then
-					rainbowConnection:Disconnect()
-					rainbowConnection = nil
-				end
+			elseif rainbowConnection then
+				rainbowConnection:Disconnect()
+				rainbowConnection = nil
 			end
 		end,
-	})
+	}, "RainbowToggle")
 
-	local optionTable = {}
-
-	for i = 1,10 do
-		local formatted = "Option ".. tostring(i)
-		table.insert(optionTable, formatted)
-	end
+	local optionTable = {
+		"Apple",
+		"Banana",
+		"Orange",
+		"Grapes",
+		"Pineapple",
+		"Mango",
+		"Strawberry",
+		"Blueberry",
+		"Watermelon",
+		"Peach"
+	}
 
 	local Dropdown = sections.MainSection1:Dropdown({
 		Name = "Dropdown",
@@ -5047,7 +5078,7 @@ function MacLib:Demo()
 		Callback = function(Value)
 			print("Dropdown changed: ".. Value)
 		end,
-	})
+	}, "Dropdown")
 
 	local MultiDropdown = sections.MainSection1:Dropdown({
 		Name = "Multi Dropdown",
@@ -5055,7 +5086,7 @@ function MacLib:Demo()
 		Multi = true,
 		Required = false,
 		Options = optionTable,
-		Default = {"Option 1", "Option 3"},
+		Default = {"Apple", "Orange"},
 		Callback = function(Value)
 			local Values = {}
 			for Value, State in next, Value do
@@ -5063,13 +5094,13 @@ function MacLib:Demo()
 			end
 			print("Mutlidropdown changed:", table.concat(Values, ", "))
 		end,
-	})
+	}, "MultiDropdown")
 
 	sections.MainSection1:Button({
 		Name = "Update Selection",
 		Callback = function()
-			Dropdown:Set(4)
-			MultiDropdown:SetDropdown({"Option 2", "Option 5"})
+			Dropdown:UpdateSelection("Grapes")
+			MultiDropdown:UpdateSelection({"Banana", "Pineapple"})
 		end,
 	})
 
