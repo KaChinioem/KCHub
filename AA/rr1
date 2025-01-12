@@ -1634,52 +1634,7 @@ do
 		function SubLabelFunctions:SetVisibility(State)
 			subLabel.Visible = State
 		end
-		function DropdownFunctions:UpdateSelection(newSelection)
-			if not newSelection then return end
 
-			for option, _ in pairs(OptionObjs) do
-				Toggle(option, false)
-			end
-
-			local selectedOptions = {}
-			if type(newSelection) == "number" then
-				for option, data in pairs(OptionObjs) do
-					local isSelected = data.Index == newSelection
-					Toggle(option, isSelected)
-					if isSelected then
-						table.insert(selectedOptions, option)
-					end
-				end
-			elseif type(newSelection) == "string" then
-				for option, data in pairs(OptionObjs) do
-					local isSelected = option == newSelection
-					Toggle(option, isSelected)
-					if isSelected then
-						table.insert(selectedOptions, option)
-					end
-				end
-			elseif type(newSelection) == "table" then
-				for option, _ in pairs(OptionObjs) do
-					local isSelected = table.find(newSelection, option) ~= nil
-					Toggle(option, isSelected)
-					if isSelected then
-						table.insert(selectedOptions, option)
-					end
-				end
-			end
-
-			if DropdownFunctions.Settings.Callback then
-				if DropdownFunctions.Settings.Multi then
-					local Return = {}
-					for _, opt in ipairs(selectedOptions) do
-						Return[opt] = true
-					end
-					DropdownFunctions.Settings.Callback(Return)
-				else
-					DropdownFunctions.Settings.Callback(selectedOptions[1] or nil)
-				end
-			end
-		end
 		return SubLabelFunctions
 	end
 
