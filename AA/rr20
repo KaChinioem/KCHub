@@ -3969,7 +3969,8 @@ function MacLib:Window(Settings)
 	content.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	content.BorderSizePixel = 0
 	content.Position = UDim2.fromScale(1, 4.69e-08)
-	content.Size = UDim2.fromScale(0.675, 1)
+	--content.Size = UDim2.fromScale(0.675, 1)
+	content.Size = UDim2.new(0, (base.AbsoluteSize.X - sidebar.AbsoluteSize.X), 1, 0)
 
 	MacLib.content = content
 
