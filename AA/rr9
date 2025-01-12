@@ -63,6 +63,10 @@ function Defaults(Default, Settings)
 	return Settings
 end
 
+local function Tween(instance, tweeninfo, propertytable)
+	return TweenService:Create(instance, tweeninfo, propertytable)
+end
+
 -- // Addons
 
 local SectionFunctions = {}
