@@ -3977,7 +3977,7 @@ function MacLib:Window(Settings)
 	local defaultSidebarWidth = sidebar.AbsoluteSize.X
 	local initialMouseX, initialSidebarWidth
 	local snapRange = 20
-	local minSidebarWidth = 107
+	local minSidebarWidth = 300
 	local maxSidebarWidth = base.AbsoluteSize.X - minSidebarWidth
 
 	local TweenSettings = {
