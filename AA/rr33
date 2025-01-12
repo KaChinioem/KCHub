@@ -1,5 +1,12 @@
 local MacLib = {}
 
+do
+    local ui = game.CoreGui:FindFirstChild("Demonique")
+    if ui then
+        ui:Destroy()
+    end
+end
+
 --// Services
 local RunService 		= game:GetService("RunService")
 local HttpService 		= game:GetService("HttpService")
