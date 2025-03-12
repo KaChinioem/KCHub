@@ -397,7 +397,10 @@ function CheckDie()
         end
     end
 end
+
 local targetPlaceId = 8304191830
+local isGameFinished = false  -- ตัวแปรเพื่อควบคุมการทำงาน
+
 if game.PlaceId == targetPlaceId then
     while true do
      CheckDie()
@@ -405,25 +408,35 @@ if game.PlaceId == targetPlaceId then
      CheckShirine()
      wait(5)
      AutoJoinDungeon()
+        if isGameFinished then
+            break  -- ออกจากลูปถ้าเกมเสร็จแล้ว
+        end	 
     end 
 else
     local gameFinishedPath = game.Workspace:WaitForChild("_DATA"):WaitForChild("GameFinished")
     if gameFinishedPath and gameFinishedPath:IsA("BoolValue") then
+        while not gameFinishedPath.Value do
+            task.wait(1)  -- รอให้สถานะ GameFinished เป็น true
+        end
+
+        -- เมื่อเกมเสร็จแล้ว ให้ทำงานต่อไป
+        isGameFinished = true
+        task.wait(3)
+
+        -- เริ่มทำงานในลูปเมื่อเกมเสร็จ
         while true do
-            if gameFinishedPath.Value == true then
-                task.wait(3)
-                while true do
-                  ClickEndGame()
-                  AutoOpenChest()
-                  CheckDie()
-                  checkShop()
-                  CheckShirine()
-                  wait(5)
-                  AutoJoinDungeon()
-                end 
-                break
+            ClickEndGame()
+            AutoOpenChest()
+            CheckDie()
+            checkShop()
+            CheckShirine()
+            wait(5)
+            AutoJoinDungeon()
+            
+            if not gameFinishedPath.Value then
+                break  -- ออกจากลูปถ้าเกมไม่เสร็จแล้ว
             end
-            task.wait(1)
+			wait(1)
         end
     else
         warn("Không tìm thấy GameFinished hoặc không phải là BoolValue.")
