@@ -1,8 +1,9 @@
+repeat task.wait() until game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name)
+
 local Whitelist = getgenv().Config["Shrine"]["Accept"]
 local Blacklist = getgenv().Config["Shrine"]["Deny"]
 local priority = getgenv().Config["Shop"]["Buy Priority"]
 local ignored = getgenv().Config["Shop"]["Ignored Buy"]
-
 
 local player = game.Players.LocalPlayer
 local targetPath = player.PlayerGui.DungeonUI.Main.Main.Outer.MainHolder.Outer.LevelSelection.Inset.MainRow
@@ -10,6 +11,14 @@ local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+local Event = game:GetService("ReplicatedStorage").endpoints["client_to_server"]
+local IsLobby = workspace:FindFirstChild('_MAP_CONFIG') if IsLobby and IsLobby:FindFirstChild('IsLobby') then IsLobby = IsLobby.IsLobby.Value end
+local IsGame = workspace:FindFirstChild('_waves_started')
+local _DATA = workspace:FindFirstChild('_DATA')
+local GameFinished
+if _DATA then GameFinished = _DATA:FindFirstChild('GameFinished') end
+local ResultUI = player.PlayerGui['ResultsUI']
+
 local function getLevelData() 
     return game.Workspace._MAP_CONFIG:WaitForChild("GetLevelData"):InvokeServer() 
 end
@@ -170,9 +179,10 @@ local function checkShop()
     end
     if #itemsToBuy == 0 then
         print("Không có item hợp lệ để mua, tiếp tục dungeon...")
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
+         Event['dungeon_continue_shop']:InvokeServer()
         return
     end
+	
     local playerMoney = tonumber(moneyLabel.Text)
     if not playerMoney then
         print("Lỗi khi lấy số tiền của người chơi.")
@@ -203,14 +213,16 @@ local function checkShop()
             print(string.format("Mua thành công: %s với giá %d", item.Name, item.Price))
             
             local args = {[1] = item.Index}
-            ReplicatedStorage.endpoints.client_to_server.dungeon_buy_shop:InvokeServer(unpack(args))
+			Event['dungeon_buy_shop']:InvokeServer(unpack(args))	
+			
             playerMoney = playerMoney - item.Price
         else
             print(string.format("Không đủ tiền để mua: %s (%d cần %d)", item.Name, playerMoney, item.Price))
         end
     end
     print("Đã mua xong tất cả các item hợp lệ. Tiếp tục dungeon...")
-    game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
+    Event['dungeon_continue_shop']:InvokeServer()
+	
 end
 
 local function calculatePartScore(part)
@@ -311,8 +323,8 @@ function AutoJoinDungeon()
     if bestFrame then
         print("Tham gia room tốt nhất: Room " .. bestFrame.Index .. " với tổng điểm = " .. bestFrame.Score)
         local args = { tostring(bestFrame.Index) }
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_enter_room:InvokeServer(unpack(args))
-    end
+        Event['dungeon_enter_room']:InvokeServer(unpack(args))
+	end
 end
 
 
@@ -379,11 +391,13 @@ local function CheckShirine()
     end
 
     if matchFound then
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_shrine_accept:InvokeServer()
+        Event['dungeon_shrine_accept']:InvokeServer()
     else
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
+        Event['dungeon_continue_shop']:InvokeServer()
+		
     end
 end
+
 function CheckDie()
     local player = game.Players.LocalPlayer
     local youDiedFrame = player:FindFirstChild("PlayerGui"):FindFirstChild("DungeonUI")
@@ -393,40 +407,52 @@ function CheckDie()
     
     if youDiedFrame and youDiedFrame:IsA("Frame") then
         if youDiedFrame.Visible == true then
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_death:InvokeServer()
+            Event['dungeon_continue_death']:InvokeServer()
         end
     end
 end
 
 -- เริ่มต้นโปรแกรม
-local function runDungeonAutomation()
-    local targetPlaceId = 8304191830
-    if game.PlaceId == targetPlaceId then
-        while true do
-			 CheckDie()
-			 checkShop()
-			 CheckShirine()
-			 wait(5)
-        end
-    else
-        local gameFinishedPath = game.Workspace:WaitForChild("_DATA"):WaitForChild("GameFinished")
-        while not gameFinishedPath.Value do
-            task.wait(1)
-        end
-        -- หลังจากเกมจบแล้ว
-		task.wait(1)
-		print("Game Finished")
-        while true do
-            ClickEndGame()
-            AutoOpenChest()
-            CheckDie()
-            checkShop()
-            CheckShirine()
-            wait(5)
-            AutoJoinDungeon()
-            task.wait(5)
-        end
-    end
+local function endGameFunc ()
+	local targetPlaceId = 8304191830
+	task.spawn(function()
+		while true do
+			if game.PlaceId == targetPlaceId then
+				while true do
+					 CheckDie()
+					 checkShop()
+					 CheckShirine()
+					 wait(5)
+				end
+			else
+				while not GameFinished.Value do
+					task.wait(1)
+				end
+				-- หลังจากเกมจบแล้ว
+				task.wait(1)
+				print("Game Finished")
+				while true do
+					ClickEndGame()
+					AutoOpenChest()
+					CheckDie()
+					checkShop()
+					CheckShirine()
+					wait(5)
+					AutoJoinDungeon()
+					task.wait(5)
+				end
+			end
+		end
+	end)
 end
 
-runDungeonAutomation()
+if GameFinished and not IsLobby then
+	repeat task.wait() until GameFinished.Value and ResultUI.Enabled
+
+	if GetSave(ResultWebhook.Name) then
+		webhook()
+	end
+	
+	endGameFunc()
+
+end
