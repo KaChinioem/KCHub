@@ -412,6 +412,30 @@ function CheckDie()
     end
 end
 
+local function RemoveAnimator()
+	for _, unit in ipairs(workspace._UNITS:GetChildren()) do
+		if unit:FindFirstChild("Humanoid") then
+			local humanoid = unit.Humanoid
+			local animatorCount = 0
+
+			-- นับจำนวน Animator ที่มีอยู่ใน Humanoid
+			for _, anim in ipairs(humanoid:GetChildren()) do
+				if anim:IsA("Animator") then
+					animatorCount = animatorCount + 1
+					-- ลบ Animator ที่มีอยู่
+					anim:Destroy()
+				end
+			end
+
+			-- สร้าง Animator ใหม่ไม่เกิน 2 ตัว
+			if animatorCount < 2 then
+				local newAnimator = Instance.new("Animator")
+				newAnimator.Parent = humanoid
+			end
+		end
+	end
+end	
+
 -- เริ่มต้นโปรแกรม
 local function endGameFunc ()
 	local targetPlaceId = 8304191830
@@ -425,6 +449,7 @@ local function endGameFunc ()
 					 wait(5)
 				end
 			else
+				RemoveAnimator()
 				while not GameFinished.Value do
 					task.wait(1)
 				end
