@@ -449,10 +449,6 @@ end
 if GameFinished and not IsLobby then
 	repeat task.wait() until GameFinished.Value and ResultUI.Enabled
 
-	if GetSave(ResultWebhook.Name) then
-		webhook()
-	end
-	
 	endGameFunc()
 
 end
