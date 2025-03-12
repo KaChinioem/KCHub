@@ -428,3 +428,5 @@ local function runDungeonAutomation()
         end
     end
 end
+
+runDungeonAutomation()
