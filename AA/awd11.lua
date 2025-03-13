@@ -82,16 +82,19 @@ local function AutoOpenChest()
                 openChests("ChestFrameRare", rareCount, true)
             end
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
-              
+            task.wait(1)
+			TPLobby()
+			
 			for _, frame in ipairs(frames1) do
 				if frame:IsA("Frame") and frame.Name == "StartHolder" then
 					if frame.Visible == true then
 						if currentDepth >= 20 then
-							TPLobby()  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
+							print("test")  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
 						end					
 					end
 				end
-			end			
+			end	
+			
 		else
             print("Chưa đủ. Hiện tại: " .. currentDepth .. " / 20")
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
