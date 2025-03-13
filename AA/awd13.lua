@@ -7,7 +7,7 @@ local ignored = getgenv().Config["Shop"]["Ignored Buy"]
 
 local player = game.Players.LocalPlayer
 local targetPath = player.PlayerGui.DungeonUI.Main.Main.Outer.MainHolder.Outer.LevelSelection.Inset.MainRow
-local StartHolder = player.PlayerGui.DungeonUI.Main.Main.Outer.MainHolder.Outer.StartHolder
+local StartHolder = player.PlayerGui.DungeonUI.Main.Main.Outer.StartHolder
 local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local Players = game:GetService("Players")
