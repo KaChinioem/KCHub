@@ -448,7 +448,6 @@ local function endGameFunc ()
 					 CheckShirine()
 					 task.wait(3)
 					 AutoJoinDungeon()
-					 task.wait(3)
 				end
 			else
 				RemoveAnimator()
@@ -465,7 +464,6 @@ local function endGameFunc ()
 					CheckShirine()
 					task.wait(3)
 					AutoJoinDungeon()
-					task.wait(3)
 				end
 			end
 		end
