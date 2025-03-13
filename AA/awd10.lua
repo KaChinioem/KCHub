@@ -7,6 +7,7 @@ local ignored = getgenv().Config["Shop"]["Ignored Buy"]
 
 local player = game.Players.LocalPlayer
 local targetPath = player.PlayerGui.DungeonUI.Main.Main.Outer.MainHolder.Outer.LevelSelection.Inset.MainRow
+local StartHolder = player.PlayerGui.DungeonUI.Main.Main.Outer.MainHolder.Outer.StartHolder
 local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local Players = game:GetService("Players")
@@ -56,9 +57,10 @@ local function AutoOpenChest()
     
     if type(data) == "table" and data._dungeon and data._dungeon.depth then
         local currentDepth = data._dungeon.depth
-        
+		local frames1 = StartHolder:GetChildren()
+
         if currentDepth >= 20 then
-            print("Đã đủ")
+            print("Reached the required depth")
             
             local player = game.Players.LocalPlayer
             local scroll = player:WaitForChild("PlayerGui"):WaitForChild("DungeonUI")
@@ -80,10 +82,16 @@ local function AutoOpenChest()
                 openChests("ChestFrameRare", rareCount, true)
             end
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
-            
-			if currentDepth >= 20 and normalCount == 0 and rareCount == 0 then
-                TPLobby()  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
-            end        
+              
+			for _, frame in ipairs(frames1) do
+				if frame:IsA("Frame") and frame.Name == "StartHolder" then
+					if frame.Visible == true then
+						if currentDepth >= 20 then
+							TPLobby()  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
+						end					
+					end
+				end
+			end			
 		else
             print("Chưa đủ. Hiện tại: " .. currentDepth .. " / 20")
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
@@ -146,9 +154,17 @@ for _, imageLabel in pairs(dungeonItemsPath:GetDescendants()) do
     end
 end
 
+local function showNotification(title, message)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = message,
+        Duration = 3  -- ระยะเวลาในการแสดงข้อความ
+    })
+end
+
 local function checkShop()
     if shopPath.Visible == false then
-        print("Không có shop.")
+        print("There is no shop.")
         return
     end
 
@@ -214,19 +230,19 @@ local function checkShop()
 	
     for _, item in ipairs(buyQueue) do
         if playerMoney >= item.Price then
-            print(string.format("Mua thành công: %s với giá %d", item.Name, item.Price))
+            print(string.format("Purchase successful: %s price %d", item.Name, item.Price))
             
             local args = {[1] = item.Index}
 			Event['dungeon_buy_shop']:InvokeServer(unpack(args))	
 			
             playerMoney = playerMoney - item.Price
         else
-            print(string.format("Không đủ tiền để mua: %s (%d cần %d)", item.Name, playerMoney, item.Price))
+			showNotification(string.format("Not enough money to buy: %s (%d need %d)", item.Name, playerMoney, item.Price))
         end
     end
 
-    print("Đã mua xong tất cả các item hợp lệ. Tiếp tục dungeon...")
-    Event['dungeon_continue_shop']:InvokeServer()
+    showNotification("All valid items purchased. Continue dungeon...")
+    --Event['dungeon_continue_shop']:InvokeServer()
 	
 end
 
@@ -314,7 +330,7 @@ function AutoJoinDungeon()
     end
 
     if not bestFrame then
-        warn("Không tìm thấy room tốt nhất.")
+        warn("No suitable room found.")
         bestFrame = {
             Index = 1,
             Score = 0,
