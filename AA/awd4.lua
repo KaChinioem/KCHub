@@ -446,7 +446,7 @@ local function endGameFunc ()
 					 CheckDie()
 					 checkShop()
 					 CheckShirine()
-					 wait(3)
+					 wait(5)
 				end
 			else
 				RemoveAnimator()
@@ -462,9 +462,9 @@ local function endGameFunc ()
 					CheckDie()
 					checkShop()
 					CheckShirine()
-					wait(3)
+					wait(5)
 					AutoJoinDungeon()
-					task.wait(3)
+					task.wait(5)
 				end
 			end
 		end
@@ -475,5 +475,6 @@ if GameFinished and not IsLobby then
 	repeat task.wait() until GameFinished.Value and ResultUI.Enabled
 
 	endGameFunc()
-
+else
+	endGameFunc()
 end
