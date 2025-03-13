@@ -28,6 +28,14 @@ local function TPLobby ()
 	game:GetService('TeleportService'):Teleport(8304191830, player)
 end
 
+local function showNotification(title, message)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = message,
+        Duration = 3  -- ระยะเวลาในการแสดงข้อความ
+    })
+end
+
 local function getChestCount(chestFrame)
     local amountLabel = chestFrame:FindFirstChild("Main")
         and chestFrame.Main:FindFirstChild("ItemHolder")
@@ -60,7 +68,7 @@ local function AutoOpenChest()
 		local frames1 = StartHolder:GetChildren()
 
         if currentDepth >= 20 then
-            print("Reached the required depth")
+            showNotification("Test","Reached the required depth")
             
             local player = game.Players.LocalPlayer
             local scroll = player:WaitForChild("PlayerGui"):WaitForChild("DungeonUI")
@@ -85,22 +93,12 @@ local function AutoOpenChest()
             task.wait(1)
 			TPLobby()
 			
-			for _, frame in ipairs(frames1) do
-				if frame:IsA("Frame") and frame.Name == "StartHolder" then
-					if frame.Visible == true then
-						if currentDepth >= 20 then
-							print("test")  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
-						end					
-					end
-				end
-			end	
-			
 		else
-            print("Chưa đủ. Hiện tại: " .. currentDepth .. " / 20")
+            showNotification("Test","Not enough. Currently: " .. currentDepth .. " / 20")
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
         end
     else
-        print("Không thể lấy dữ liệu hoặc dữ liệu không đúng định dạng.")
+        showNotification("Test","Unable to get data or data is not in correct format.")
     end
 end
 local function clickButton(buttonPath)
@@ -157,21 +155,13 @@ for _, imageLabel in pairs(dungeonItemsPath:GetDescendants()) do
     end
 end
 
-local function showNotification(title, message)
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = title,
-        Text = message,
-        Duration = 3  -- ระยะเวลาในการแสดงข้อความ
-    })
-end
-
 local function checkShop()
     if shopPath.Visible == false then
-        print("There is no shop.")
+        showNotification("Test","There is no shop.")
         return
     end
 
-    print("Shop đang bán:")
+    showNotification("Test","Shop đang bán:")
     local scroll = shopPath:WaitForChild("Inset"):WaitForChild("ItemsRows"):WaitForChild("Scroll")
     local itemIndex = 1
     local itemsToBuy = {}
@@ -206,14 +196,14 @@ local function checkShop()
     end
 	
     if #itemsToBuy == 0 then
-        print("Không có item hợp lệ để mua, tiếp tục dungeon...")
+        showNotification("Test","No valid items to purchase, continue dungeon...")
          Event['dungeon_continue_shop']:InvokeServer()
         return
     end
 	
     local playerMoney = tonumber(moneyLabel.Text)
     if not playerMoney then
-        print("Lỗi khi lấy số tiền của người chơi.")
+        showNotification("Test","Error while taking player's money.")
         return
     end
 
@@ -240,11 +230,11 @@ local function checkShop()
 			
             playerMoney = playerMoney - item.Price
         else
-			showNotification(string.format("Not enough money to buy: %s (%d need %d)", item.Name, playerMoney, item.Price))
+			showNotification("Test", string.format("Not enough money to buy: %s (%d need %d)", item.Name, playerMoney, item.Price))
         end
     end
 
-    showNotification("All valid items purchased. Continue dungeon...")
+    showNotification("Test","All valid items purchased. Continue dungeon...")
     --Event['dungeon_continue_shop']:InvokeServer()
 	
 end
@@ -313,7 +303,16 @@ function AutoJoinDungeon()
     local frames = targetPath:GetChildren()
     local frameIndex = 1
     local bestFrame = nil
-
+	local frames1 = StartHolder:GetChildren()
+	
+	for _, frame in ipairs(frames1) do
+		if frame:IsA("Frame") and frame.Name == "StartHolder" then
+			if frame.Visible == true then
+				game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("dungeon_start"):InvokeServer()
+			end
+		end
+	end
+	
     for _, frame in ipairs(frames) do
         if frame:IsA("Frame") and frame.Name == "Frame" then
             local score, itemsFound = calculateFrameScore(frame)
@@ -333,7 +332,7 @@ function AutoJoinDungeon()
     end
 
     if not bestFrame then
-        warn("No suitable room found.")
+        showNotification("Test","No suitable room found.")
         bestFrame = {
             Index = 1,
             Score = 0,
@@ -342,16 +341,15 @@ function AutoJoinDungeon()
     end
 
     for _, data in ipairs(frameData) do
-        print("Room " .. data.Index .. ": Tổng điểm = " .. data.Score .. ", Vật phẩm = [" .. table.concat(data.Items, ", ") .. "]")
+        print("Room " .. data.Index .. ": Total score = " .. data.Score .. ", Item = [" .. table.concat(data.Items, ", ") .. "]")
     end
 
     if bestFrame then
-        print("Tham gia room tốt nhất: Room " .. bestFrame.Index .. " với tổng điểm = " .. bestFrame.Score)
+        print("Join the best room : Room " .. bestFrame.Index .. " Total score = " .. bestFrame.Score)
         local args = { tostring(bestFrame.Index) }
         Event['dungeon_enter_room']:InvokeServer(unpack(args))
 	end
 end
-
 
 local function IsWhitelisted(name)
     for _, item in ipairs(Whitelist) do
@@ -410,7 +408,7 @@ local function CheckShirine()
     local matchFound = false
     for _, offeredImageId in ipairs(offeredItems) do
         if curseImages[offeredImageId] then
-            print("✅ Trùng khớp tìm thấy: " .. curseImages[offeredImageId] .. " | " .. offeredImageId)
+            print("✅ Match found: " .. curseImages[offeredImageId] .. " | " .. offeredImageId)
             matchFound = true
         end
     end
@@ -455,7 +453,7 @@ local function endGameFunc ()
 					task.wait(1)
 				end
 				-- หลังจากเกมจบแล้ว
-				print("Game Finished")
+				showNotification("Test","Game Finished")
 				while true do
 					ClickEndGame()
 					AutoOpenChest()
