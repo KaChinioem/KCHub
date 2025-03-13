@@ -23,6 +23,10 @@ local function getLevelData()
     return game.Workspace._MAP_CONFIG:WaitForChild("GetLevelData"):InvokeServer() 
 end
 
+local function TPLobby ()
+	game:GetService('TeleportService'):Teleport(8304191830, player)
+end
+
 local function getChestCount(chestFrame)
     local amountLabel = chestFrame:FindFirstChild("Main")
         and chestFrame.Main:FindFirstChild("ItemHolder")
@@ -76,7 +80,11 @@ local function AutoOpenChest()
                 openChests("ChestFrameRare", rareCount, true)
             end
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
-        else
+            
+			if currentDepth >= 20 and normalCount == 0 and rareCount == 0 then
+                TPLobby()  -- เรียก TPLobby หลังจากเปิดกล่องเสร็จ
+            end        
+		else
             print("Chưa đủ. Hiện tại: " .. currentDepth .. " / 20")
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
         end
@@ -280,6 +288,7 @@ local function calculateFrameScore(frame)
 
     return totalScore, totalItemsFound
 end
+
 function AutoJoinDungeon()
     local frameData = {}
     local frames = targetPath:GetChildren()
@@ -449,3 +458,6 @@ if GameFinished and not IsLobby then
 else
 	endGameFunc()
 end
+
+เพิ่ม TPLobby() ตอน AutoOpenChest() เปิดกล่อง normalCount,rareCount จนเหลือ 0 ทั้งคู่แล้วค่อย TPLobby()
+
