@@ -446,7 +446,7 @@ local function endGameFunc ()
 					 CheckDie()
 					 checkShop()
 					 CheckShirine()
-					 wait(5)
+					 wait(3)
 				end
 			else
 				RemoveAnimator()
@@ -462,9 +462,9 @@ local function endGameFunc ()
 					CheckDie()
 					checkShop()
 					CheckShirine()
-					wait(5)
+					wait(3)
 					AutoJoinDungeon()
-					task.wait(5)
+					task.wait(3)
 				end
 			end
 		end
