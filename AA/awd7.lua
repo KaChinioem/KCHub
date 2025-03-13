@@ -177,6 +177,7 @@ local function checkShop()
             end
         end
     end
+	
     if #itemsToBuy == 0 then
         print("Không có item hợp lệ để mua, tiếp tục dungeon...")
          Event['dungeon_continue_shop']:InvokeServer()
@@ -188,13 +189,7 @@ local function checkShop()
         print("Lỗi khi lấy số tiền của người chơi.")
         return
     end
-	
-    -- ตรวจสอบว่ามีเงินมากกว่า 1000
-    if playerMoney <= 1000 then
-        print("Số tiền không đủ để mua items. Cần phải có hơn 1000 để tiếp tục.")
-        return
-    end
-	
+
     local buyQueue = {}
     for _, priorityName in ipairs(priority) do
         for _, item in ipairs(itemsToBuy) do
@@ -208,8 +203,9 @@ local function checkShop()
             table.insert(buyQueue, item)
         end
     end
+	
     for _, item in ipairs(buyQueue) do
-        if playerMoney >= item.Price and (playerMoney - item.Price) >= 1000 then
+        if playerMoney >= item.Price then
             print(string.format("Mua thành công: %s với giá %d", item.Name, item.Price))
             
             local args = {[1] = item.Index}
@@ -220,6 +216,7 @@ local function checkShop()
             print(string.format("Không đủ tiền để mua: %s (%d cần %d)", item.Name, playerMoney, item.Price))
         end
     end
+
     print("Đã mua xong tất cả các item hợp lệ. Tiếp tục dungeon...")
     Event['dungeon_continue_shop']:InvokeServer()
 	
