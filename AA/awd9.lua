@@ -458,6 +458,3 @@ if GameFinished and not IsLobby then
 else
 	endGameFunc()
 end
-
-เพิ่ม TPLobby() ตอน AutoOpenChest() เปิดกล่อง normalCount,rareCount จนเหลือ 0 ทั้งคู่แล้วค่อย TPLobby()
-
