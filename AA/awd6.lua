@@ -446,7 +446,9 @@ local function endGameFunc ()
 					 CheckDie()
 					 checkShop()
 					 CheckShirine()
-					 wait(5)
+					 task.wait(3)
+					 AutoJoinDungeon()
+					 task.wait(3)
 				end
 			else
 				RemoveAnimator()
@@ -454,7 +456,6 @@ local function endGameFunc ()
 					task.wait(1)
 				end
 				-- หลังจากเกมจบแล้ว
-				task.wait(1)
 				print("Game Finished")
 				while true do
 					ClickEndGame()
@@ -462,9 +463,9 @@ local function endGameFunc ()
 					CheckDie()
 					checkShop()
 					CheckShirine()
-					wait(5)
+					task.wait(3)
 					AutoJoinDungeon()
-					task.wait(5)
+					task.wait(3)
 				end
 			end
 		end
