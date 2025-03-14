@@ -83,14 +83,26 @@ local function AutoOpenChest()
             
             local normalCount = normalChest and getChestCount(normalChest) or 0
             local rareCount = rareChest and getChestCount(rareChest) or 0
-            if normalCount > 0 then
-                openChests("ChestFrameNormal", normalCount, false)
-            end
-            if rareCount > 0 then
-                openChests("ChestFrameRare", rareCount, true)
+            -- วนซ้ำจนกว่ากล่องทั้งหมดจะถูกเปิด
+            while normalCount > 0 or rareCount > 0 do
+                if normalCount > 0 then
+					showNotification("Test","Opening Normal Chest: " .. normalCount .. " remaining")
+                    openChests("ChestFrameNormal", normalCount, false)
+                end
+                if rareCount > 0 then
+					showNotification("Test","Opening Rare Chest: " .. rareCount .. " remaining")
+                    openChests("ChestFrameRare", rareCount, true)
+                end
+
+                -- รอให้ระบบประมวลผลก่อนอัปเดตค่าใหม่
+                task.wait(0.2)
+
+                -- อัปเดตจำนวนกล่องที่เหลือ
+                normalCount = normalChest and getChestCount(nomalChest) or 0
+                rareCount = rareChest and getChestCount(rareChrest) or 0
             end
             game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
-            task.wait(1)
+            task.wait(0.5)
 			TPLobby()
 			
 		else
@@ -101,6 +113,7 @@ local function AutoOpenChest()
         showNotification("Test","Unable to get data or data is not in correct format.")
     end
 end
+
 local function clickButton(buttonPath)
     local button
     repeat
