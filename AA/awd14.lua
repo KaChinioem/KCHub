@@ -95,7 +95,7 @@ local function AutoOpenChest()
 			
 		else
             showNotification("Test","Not enough. Currently: " .. currentDepth .. " / 20")
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
+            --game:GetService("ReplicatedStorage").endpoints.client_to_server.dungeon_continue_shop:InvokeServer()
         end
     else
         showNotification("Test","Unable to get data or data is not in correct format.")
@@ -197,7 +197,7 @@ local function checkShop()
 	
     if #itemsToBuy == 0 then
         showNotification("Test","No valid items to purchase, continue dungeon...")
-         Event['dungeon_continue_shop']:InvokeServer()
+         --Event['dungeon_continue_shop']:InvokeServer()
         return
     end
 	
@@ -341,11 +341,11 @@ function AutoJoinDungeon()
     end
 
     for _, data in ipairs(frameData) do
-        print("Room " .. data.Index .. ": Total score = " .. data.Score .. ", Item = [" .. table.concat(data.Items, ", ") .. "]")
+        showNotification("Test","Room " .. data.Index .. ": Total score = " .. data.Score .. ", Item = [" .. table.concat(data.Items, ", ") .. "]")
     end
 
     if bestFrame then
-        print("Join the best room : Room " .. bestFrame.Index .. " Total score = " .. bestFrame.Score)
+        showNotification("Test","Join the best room : Room " .. bestFrame.Index .. " Total score = " .. bestFrame.Score)
         local args = { tostring(bestFrame.Index) }
         Event['dungeon_enter_room']:InvokeServer(unpack(args))
 	end
@@ -408,7 +408,7 @@ local function CheckShirine()
     local matchFound = false
     for _, offeredImageId in ipairs(offeredItems) do
         if curseImages[offeredImageId] then
-            print("✅ Match found: " .. curseImages[offeredImageId] .. " | " .. offeredImageId)
+            showNotification("Test","✅ Match found: " .. curseImages[offeredImageId] .. " | " .. offeredImageId)
             matchFound = true
         end
     end
@@ -416,7 +416,7 @@ local function CheckShirine()
     if matchFound then
         Event['dungeon_shrine_accept']:InvokeServer()
     else
-        Event['dungeon_continue_shop']:InvokeServer()
+        --Event['dungeon_continue_shop']:InvokeServer()
 		
     end
 end
